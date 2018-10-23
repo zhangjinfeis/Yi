@@ -1,0 +1,55 @@
+<!--pages/user-subject-apply/user-subject-apply.wxml-->
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">科目</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" type="text" disabled placeholder="" value="科目二" style="color:#999;" />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">教练</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" disabled placeholder="" value="朴树" style="color:#999;" />
+        </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">训练时间</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
+                <view class="weui-input">{{accounts[accountIndex]}}</view>
+            </picker>
+        </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">训练地点</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" disabled placeholder="" value="光谷训练场" />
+        </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">训练项目</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindItemChange" value="{{examItemIndex}}" range="{{examItem}}">
+                <view class="weui-input">{{examItem[examItemIndex]}}</view>
+            </picker>
+        </view>
+    </view>
+
+</view>
+
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="showTopTips">提交预约</button>
+</view>

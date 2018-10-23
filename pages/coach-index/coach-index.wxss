@@ -1,0 +1,11 @@
+/* pages/coach-index/coach-index.wxss */
+page{background: #f2f2f2;}
+/*头部*/
+.agency-head{padding:30rpx 40rpx; position: relative;background: #38c08a;color:#ffffff;}
+.agency-head .pic{width:140rpx;height:140rpx;float: left; overflow: hidden;border-radius:70rpx;}
+.agency-head .pic button{width:150rpx;height:150rpx;line-height: 150rpx;margin:-5rpx 0 0 -5rpx;font-size:20rpx;}
+.agency-head .pic image{width:140rpx;height:140rpx;}
+.agency-head .center{margin:0 0 0 30rpx; float: left;}
+.agency-head .center .nickname{margin:20rpx 0 0 0;}
+.agency-head .center .score{font-size:28rpx;}
+.agency-head .arrow:after{content:" ";display:inline-block;height:6px;width:6px;border-width:2px 2px 0 0;border-color:#ffffff;border-style:solid;-webkit-transform:matrix(.71,.71,-.71,.71,0,0);transform:matrix(.71,.71,-.71,.71,0,0);top:-2px;right:30rpx;position:absolute;top:50%;margin-top:-4px;}

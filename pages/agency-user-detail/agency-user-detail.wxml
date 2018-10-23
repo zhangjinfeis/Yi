@@ -1,0 +1,33 @@
+<!--pages/agency-user-detail/agency-user-detail.wxml-->
+<view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">学员姓名</view>
+            <view class="weui-form-preview__value_in-hd">朴树</view>
+        </view>
+        </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">手机</view>
+            <view class="weui-form-preview__value">18012431666</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">付款状态</view>
+            <view class="weui-form-preview__value">已付款</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">训练时长</view>
+            <view class="weui-form-preview__value">20小时</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">练车进度</view>
+            <view class="weui-form-preview__value">
+                <navigator class="green">查看</navigator>
+            </view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft">
+    <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">拨打电话</navigator>
+    </view>
+</view>
+<view class="h30"></view>

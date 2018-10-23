@@ -1,0 +1,65 @@
+<!--pages/user-subject2/user-subject2.wxml-->
+
+<view class="h30"></view>
+<view class="page-title">科目二</view>
+<view class="h30"></view>
+<view style="padding:0 30%;">
+    <button class="weui-btn" type="primary" bindtap="bindSubjectApply">预约课程</button>
+</view>
+
+
+<view class="weui-cells__title">我的课程</view>
+<view class="user-subject">
+    <view class="item">
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">时间</view>
+                    <view class="weui-form-preview__value">2018-11-12 下午</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">地点</view>
+                    <view class="weui-form-preview__value">光谷训练场</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">教练</view>
+                    <view class="weui-form-preview__value">朴树</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">状态</view>
+                    <view class="weui-form-preview__value">预约中</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+            <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">联系教练</navigator>
+                <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">取消预约</navigator>
+            </view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">时间</view>
+                    <view class="weui-form-preview__value">2018-11-12 下午</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">地点</view>
+                    <view class="weui-form-preview__value">光谷训练场</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">教练</view>
+                    <view class="weui-form-preview__value">朴树</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">状态</view>
+                    <view class="weui-form-preview__value">预约中</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+            <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">联系教练</navigator>
+                <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">取消预约</navigator>
+            </view>
+        </view>
+    </view>
+</view>

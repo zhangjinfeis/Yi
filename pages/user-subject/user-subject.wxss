@@ -1,0 +1,5 @@
+/* pages/user-subject2/user-subject2.wxss */
+.page-title{padding:0 30rpx;font-weight: bold;}
+
+.user-subject{}
+.user-subject .item{padding:30rpx 0;}

@@ -1,0 +1,5 @@
+/* pages/user-exam/user-exam.wxss */
+
+.user-exam-status{ text-align: center; font-size: 40rpx; font-weight: bold;}
+
+.user-exam-btn{padding:0 30%;margin:30rpx 0 0 0;}

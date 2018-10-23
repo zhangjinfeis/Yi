@@ -1,0 +1,16 @@
+/* pages/user-index/user-index.wxss */
+page{background: #f2f2f2;}
+/*头部*/
+.user-head{padding:30rpx 40rpx; position: relative;background: #ffffff;border-bottom:#d9d9d9 1rpx solid;}
+.user-head .pic{width:140rpx;height:140rpx;float: left; overflow: hidden;border-radius:70rpx;border:#d9d9d9 1rpx solid;}
+.user-head .pic button{width:150rpx;height:150rpx;line-height: 150rpx;margin:-5rpx 0 0 -5rpx;font-size:20rpx;}
+.user-head .pic image{width:140rpx;height:140rpx;}
+.user-head .center{margin:0 0 0 30rpx; float: left;}
+.user-head .center .nickname{margin:20rpx 0 0 0;}
+.user-head .center .score{font-size:28rpx;}
+.user-head .arrow:after{content:" ";display:inline-block;height:6px;width:6px;border-width:2px 2px 0 0;border-color:#c8c8cd;border-style:solid;-webkit-transform:matrix(.71,.71,-.71,.71,0,0);transform:matrix(.71,.71,-.71,.71,0,0);top:-2px;right:30rpx;position:absolute;top:50%;margin-top:-4px;}
+
+/*订单*/
+.order-3{padding:20rpx;background:#ffffff;border-bottom:#d9d9d9 1rpx solid;}
+.order-3 .item{ height: 80rpx; line-height: 80rpx; text-align:center; position: relative;}
+.order-3 .item .badge{ position:absolute;top:10rpx;left:50%;margin:0 0 0 40rpx;}

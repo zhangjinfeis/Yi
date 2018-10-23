@@ -1,0 +1,19 @@
+<!--pages/agency-commission/agency-commission.wxml-->
+<view class="weui-cells__title">佣金记录</view>
+<view class="list">
+    <view class="item">
+        <view class="time">2018-11-14 10:22</view>
+        <view class="con flex">
+            <view class="action flex-1">申请提现200，提现完成【余额100】</view>
+            <view class="money green">-200</view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="time">2018-10-14 10:22</view>
+        <view class="con flex">
+            <view class="action flex-1">周星星订单[2018093031244335]通过，结算佣金【余额300】</view>
+            <view class="money green">+300</view>
+        </view>
+    </view>
+</view>
+<view class="h30"></view>

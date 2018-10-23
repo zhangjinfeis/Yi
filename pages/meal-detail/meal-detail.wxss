@@ -1,0 +1,12 @@
+/* pages/meal-detail/meal-detail.wxss */
+.meal-head{padding:30rpx;}
+.meal-head .pic{width:160rpx;height:160rpx;}
+.meal-head .pic image{width:100%;height:100%;}
+.meal-head .center{margin:0 20rpx;}
+.meal-head .center .name{line-height: 1.4em;}
+.meal-head .center .price{font-size:28rpx;color:#f00;}
+.meal-head .center .subname{line-height: 1.4em;height:2.8em;overflow:hidden;color:#999;font-size:24rpx;}
+.meal-head .right{width:180rpx; text-align: right;}
+.meal-head .right .btn{margin:40rpx 0 0 0;color:#fff;background: #1aad19;border-radius:6rpx; display: inline-block;padding:0.4em 1em;text-align: center;font-size:28rpx;border:#199018 1rpx solid;}
+
+.meal-body{padding:0 30rpx 30rpx 30rpx;}

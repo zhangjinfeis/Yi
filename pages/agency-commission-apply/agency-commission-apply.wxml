@@ -1,0 +1,60 @@
+<!--pages/agency-commission-apply/agency-commission-apply.wxml-->
+<view class="head">
+    <view class="note">可提现积分</view>
+    <view class="money green">620</view>
+</view>
+
+<view class="weui-cells__title">提现方式</view>
+<view class="weui-cells weui-cells_after-title">
+    <radio-group bindchange="radioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+            <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+
+            <view class="weui-cell__bd">{{item.name}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+            </view>
+        </label>
+    </radio-group>
+</view>
+
+<view class="weui-cells__title">提现信息</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">开户行</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="开户行" />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">银行卡号</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="银行卡号" />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">收款人姓名</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="收款人姓名" />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">提现金额</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" type="number" placeholder="提现金额" />
+        </view>
+    </view>
+</view>
+
+
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="showTopTips">提现</button>
+</view>

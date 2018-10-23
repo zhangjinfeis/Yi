@@ -1,0 +1,65 @@
+<!--pages/agency-index/agency-index.wxml-->
+
+<!--头部-->
+<navigator class="agency-head clearfix">
+    <view class="pic">
+        <button wx:if="{{!userInfo.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像</button>
+        <block wx:else>
+            <image src="{{userInfo.avatarUrl}}"></image>
+        </block>
+    </view>
+    <view class="center">
+        <view class="nickname">{{userInfo.nickName?userInfo.nickName:'待授权'}}</view>
+        <view class="score">积分：{{userInfo.commission?userInfo.commission:'0'}}</view>
+    </view>
+    <view class="arrow"></view>
+</navigator>
+
+
+<!--我的学员-->
+<view class="weui-cells__title">我的学员</view>
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="/pages/agency-user/agency-user" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">待签约学员</view>
+        <view class="weui-badge" style="margin-left: 5px;">8</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="/pages/agency-user/agency-user" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">已签约学员</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+</view>
+
+<!--提现-->
+<view class="weui-cells__title">提现</view>
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="/pages/agency-commission-apply/agency-commission-apply" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">申请提现</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="/pages/agency-commission/agency-commission" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">佣金记录</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+</view>
+
+
+
+<!--其他-->
+<view class="weui-cells__title">其他</view>
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="/pages/guestbook/guestbook" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">意见反馈</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="/pages/page-detail/page-detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">保证协议</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="/pages/page-detail/page-detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">关于我们</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+</view>
+<view class="h30"></view>
+

@@ -1,0 +1,57 @@
+<!--pages/coach-lesson-apply-detail/coach-lesson-apply-detail.wxml-->
+<view class="weui-cells__title">课程信息</view>
+<view class="weui-form-preview">
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">时间</view>
+            <view class="weui-form-preview__value">2018年4月30日，上午8:00-11:00</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">练车场地</view>
+            <view class="weui-form-preview__value">光谷练车场</view>
+        </view>
+    </view>
+</view>
+<view class="h60"></view>
+
+<view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">学员姓名</view>
+            <view class="weui-form-preview__value_in-hd">张金华</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">练车项目</view>
+            <view class="weui-form-preview__value">侧方停车</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft">
+        <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">学员信息</navigator>
+        <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">未训练</navigator>
+        <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">完成训练</navigator>
+    </view>
+</view>
+<view class="h30"></view>
+
+<view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">学员姓名</view>
+            <view class="weui-form-preview__value_in-hd">张金华</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">练车项目</view>
+            <view class="weui-form-preview__value">侧方停车</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft">
+        <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">学员信息</navigator>
+        <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">未训练</navigator>
+        <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">完成训练</navigator>
+    </view>
+</view>
+<view class="h30"></view>

@@ -1,0 +1,51 @@
+<!--pages/user-my-coach/user-my-coach.wxml-->
+
+<view class="weui-cells__title">科目二教练</view>
+<view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">教练</view>
+            <view class="weui-form-preview__value_in-hd">朴树</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">手机</view>
+            <view class="weui-form-preview__value">18012431666</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">性别</view>
+            <view class="weui-form-preview__value">男</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft">
+    <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">拨打电话</navigator>
+        <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">预约练车</navigator>
+    </view>
+</view>
+
+<view class="h60"></view>
+
+<view class="weui-cells__title">科目三教练</view>
+<view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">教练</view>
+            <view class="weui-form-preview__value_in-hd">李健</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">手机</view>
+            <view class="weui-form-preview__value">18012431666</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">性别</view>
+            <view class="weui-form-preview__value">男</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft">
+    <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">拨打电话</navigator>
+        <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">预约练车</navigator>
+    </view>
+</view>

@@ -1,0 +1,18 @@
+/* pages/news/news.wxss */
+
+/* 分类导航 */
+.news-head{position:fixed;top:0px;left:0px;width:100%; background: #fff;}
+
+/* 置顶新闻 */
+.news-stick{padding:15rpx 15rpx 30rpx 15rpx;}
+.news-stick .item{width:330rpx;padding:0 15rpx; float: left;margin:20rpx 0 0 0;}
+.news-stick .item image{width:100%;height:220rpx;}
+.news-stick .item .title{ line-height: 1.4em; height: 2.8em; overflow: hidden;color:#333;font-size:28rpx;}
+
+/* 新闻列表 */
+.news-list{padding:0 30rpx;border-top:#d9d9d9 1rpx solid;}
+.news-list .item{padding:30rpx 0;border-bottom:#d9d9d9 1rpx solid;}
+.news-list .item image{width:240rpx;height:160rpx; float: left;}
+.news-list .item .right{ width:430rpx;  float:right;}
+.news-list .item .right .title{ height: 1.4em; line-height: 1.4em; overflow: hidden;}
+.news-list .item .right .subtitle{font-size:28rpx;color:#999;line-height: 1.4em; overflow: hidden;}

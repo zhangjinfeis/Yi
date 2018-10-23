@@ -1,0 +1,6 @@
+/* pages/agency-commission/agency-commission.wxss */
+.list{padding:0 30rpx;border-top:#d9d9d9 1rpx solid;}
+.list .item{padding:30rpx 0;border-bottom:#d9d9d9 1rpx solid;}
+.list .item .time{color:#999;font-size:28rpx;}
+.list .item .con .action{ line-height: 1.4em;}
+.list .item .con .money{width:150rpx; text-align: right;}

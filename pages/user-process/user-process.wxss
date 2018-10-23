@@ -1,0 +1,22 @@
+/* pages/user-process/user-process.wxss */
+.user-process{padding:30rpx;}
+.user-process .container{border-left:6rpx #ccc solid;margin:0 0 0 60rpx; position: relative;}
+.user-process .container .start{width:40rpx;height: 40rpx;border-radius:20rpx; background: #1aad19;box-shadow:0 0 0 10rpx rgba(26,173,25,0.5);-webkit-box-shadow:0 0 0 10rpx rgba(26,173,25,0.5); position:absolute;left:-23rpx;top:-20rpx;}
+.user-process .container .start::before{content: "Yi学车开始"; position: absolute;left:80rpx;top:0rpx; display: block;width:200rpx;color:#1aad19;}
+.user-process .container .start::after{content: " "; position: absolute;left:19rpx;top:0rpx; display: block;width:6rpx;height:140rpx; background: #1aad19;}
+.user-process .container .start image{width:100%;height: 100%;display: block;border-radius:50%; position: relative;z-index: 3;}
+.user-process .container .item{border-left:#ccc 6rpx solid;margin:0 0 0 -6rpx;padding:0 0 60rpx 0; position: relative;}
+.user-process .container .item .point{width:30rpx;height: 30rpx;border-radius:15rpx; background: #999;box-shadow:0 0 0 6rpx rgba(153,153,153,0.5);-webkit-box-shadow:0 0 0 6rpx rgba(153,153,153,0.5); position:absolute;left:-18rpx;top:0rpx; z-index: 2;}
+.user-process .container .item .point image{width:100%;height: 100%;display: block;border-radius:50%;}
+.user-process .container .item .line{width:60rpx;border-bottom:#999 6rpx solid; position: absolute;left:0;top:12rpx; z-index: 1;}
+.user-process .container .item .tag{height:60rpx; line-height:60rpx;padding:0 30rpx;background: #999;display: inline-block; position: absolute;left:50rpx;top:-16rpx;border-radius:30rpx;color:#fff; position: relative;}
+.user-process .container .item .time{ position:absolute;right:-230rpx;top:5rpx;color:#333;font-size: 28rpx; }
+.user-process .container .item-on{border-left:#1aad19 6rpx solid;}
+.user-process .container .item-on .point{background: #1aad19;box-shadow:0 0 0 6rpx rgba(26,173,25,0.5);-webkit-box-shadow:0 0 0 6rpx rgba(26,173,25,0.5);}
+.user-process .container .item-on .line{border-bottom:#1aad19 6rpx solid;}
+.user-process .container .item-on .tag{background: #1aad19;}
+.user-process .container .item-on .time{color:#1aad19; }
+
+.user-process .container .end{width:40rpx;height: 40rpx;border-radius:20rpx; background: #999;box-shadow:0 0 0 10rpx rgba(153,153,153,0.5);-webkit-box-shadow:0 0 0 10rpx rgba(153,153,153,0.5); position:absolute;left:-23rpx;bottom:-20rpx;}
+.user-process .container .end::before{content:"领取驾照"; position: absolute;left:80rpx;bottom:-6rpx; display: block;width:200rpx;color:#999;}
+.user-process .container .end image{width:100%;height: 100%;display: block;border-radius:50%; position: relative;z-index: 3;}

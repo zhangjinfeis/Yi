@@ -1,0 +1,45 @@
+<!--component/foot-nav.wxml-->
+<view class="foot flex">
+
+    <navigator url="/pages/index/index" open-type="redirect" class="item flex-1 item-on" wx:if="{{on == 0}}">
+        <view class="icon"><rich-text nodes="{{nodes0}}"></rich-text></view>
+        <view class="name iconfont">首页</view>
+    </navigator>
+    <navigator url="/pages/index/index" open-type="redirect" class="item flex-1" wx:else>
+        <view class="icon"><rich-text nodes="{{nodes0}}"></rich-text></view>
+        <view class="name iconfont">首页</view>
+    </navigator>
+
+    
+    <navigator url="/pages/news/news" class="item flex-1 item-on" wx:if="{{on == 1}}">
+        <view class="icon"><rich-text nodes="{{nodes1}}"></rich-text></view>
+        <view class="name iconfont">练车技巧</view>
+    </navigator>
+    <navigator url="/pages/news/news" class="item flex-1" wx:else>
+        <view class="icon"><rich-text nodes="{{nodes1}}"></rich-text></view>
+        <view class="name iconfont">练车技巧</view>
+    </navigator>
+
+    <!--
+    <navigator class="item flex-1 item-on" wx:if="{{on == 2}}">
+        <view class="icon"><rich-text nodes="{{nodes2}}"></rich-text></view>
+        <view class="name iconfont">预约练车</view>
+    </navigator>
+    <navigator class="item flex-1" wx:else>
+        <view class="icon"><rich-text nodes="{{nodes2}}"></rich-text></view>
+        <view class="name iconfont">预约练车{{user.openid}}</view>
+    </navigator>
+-->
+
+    <navigator url="/pages/user-index/user-index" open-type="redirect" class="item flex-1 item-on" wx:if="{{on == 3}}">
+        <view class="icon"><rich-text nodes="{{nodes3}}"></rich-text></view>
+        <view class="name iconfont">个人中心</view>
+    </navigator>
+    <navigator url="/pages/user-index/user-index" open-type="redirect" class="item flex-1" wx:else>
+        <view class="icon"><rich-text nodes="{{nodes3}}"></rich-text></view>
+        <view class="name iconfont">个人中心</view>
+    </navigator>
+
+
+</view>
+

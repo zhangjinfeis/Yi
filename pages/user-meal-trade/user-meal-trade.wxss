@@ -1,0 +1,18 @@
+/* pages/user-trade/user-trade.wxss */
+/* 分类导航 */
+.news-head{position:fixed;top:0px;left:0px;width:100%; background: #fff;}
+
+
+.trade .item{padding:30rpx;border-bottom:#d9d9d9 1rpx solid;}
+.trade .item .head{height:60rpx;}
+.trade .item .head .serial{font-size: 28rpx;color:#999;}
+.trade .item .head .status{text-align:right;width:200rpx;}
+.trade .item .con .order{ position: relative;padding:15rpx 0;}
+.trade .item .con .order .pic{width:120rpx;height:120rpx;margin:0 20rpx 0 0;}
+.trade .item .con .order .pic image{width:120rpx;height:120rpx;}
+.trade .item .con .order .title{}
+.trade .item .con .order .title-1{ font-size:32rpx;}
+.trade .item .con .order .price{font-size: 26rpx;color:#f00;}
+.trade .item .bottom{nargin:20rpx 0 0 0;}
+.trade .item .bottom .time{margin:20rpx 0 0 0;font-size: 28rpx;color:#999;}
+.trade .item .bottom .btns{ text-align:right;width:200rpx;}

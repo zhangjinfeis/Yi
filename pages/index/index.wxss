@@ -1,0 +1,36 @@
+
+/* pages/swiper/index.wxss */
+
+.f-item{color:#f00;}
+/*首页banner图*/
+.banner{width:100%; position: relative;}
+.banner swiper{ height: 400rpx;}
+.banner swiper image{width:100%;}
+
+/*首页导航*/
+.nav{margin:30rpx 0 0 0;padding:0 20rpx 30rpx 20rpx;}
+.nav .item{text-align: center;}
+.nav .item .img{margin:0 auto; display:block;width:100rpx;height:100rpx;border-radius:50rpx;}
+.nav .item .img-1{background:#ed612e;}
+.nav .item .img-2{background:#478ad1;}
+.nav .item .img-3{background:#954fdd;}
+.nav .item .img-4{background:#38c08a;}
+.nav .item .img-5{background:#e24748;}
+.nav .item .img image{width:50rpx;height:50rpx;margin:25rpx 0 0 0;}
+.nav .item .title{margin:5rpx 0 0 0;font-size:28rpx;color:#555;}
+
+/*套餐标题*/
+.meal-head{width:400rpx;height:40rpx;margin:0 auto;border-bottom:#d9d9d9 1rpx solid;}
+.meal-head .in{ width:200rpx;margin:0 auto;height:40rpx;line-height: 40rpx; text-align:center;background:#fff; position: relative;top:20rpx;font-size:40rpx;}
+
+/*学车套餐*/
+.meal-list{margin:60rpx 0 0 0;border-top:#d9d9d9 1rpx solid;}
+.meal-list .item{ position: relative;padding:30rpx 20rpx;border-bottom:#d9d9d9 1rpx solid;}
+.meal-list .item .pic{width:120rpx;height:120rpx;margin:0 20rpx 0 0;}
+.meal-list .item .pic image{width:120rpx;height:120rpx;}
+.meal-list .item .title{}
+.meal-list .item .title-1{ font-size:32rpx;}
+.meal-list .item .title-2{ font-size:24rpx; line-height:1.4em;color:#666;}
+.meal-list .item .price{font-size: 26rpx;margin:0 50rpx 0 20rpx;height:120rpx;line-height: 120rpx;color:#f00;}
+.meal-list .item .arrow:after{content:" ";display:inline-block;height:6px;width:6px;border-width:2px 2px 0 0;border-color:#c8c8cd;border-style:solid;-webkit-transform:matrix(.71,.71,-.71,.71,0,0);transform:matrix(.71,.71,-.71,.71,0,0);top:-2px;right:20rpx;position:absolute;top:50%;margin-top:-4px;}
+

@@ -1,0 +1,4 @@
+/* pages/agency-commission-apply/agency-commission-apply.wxss */
+.head{padding:30rpx; text-align: center;}
+.head .note{color:#888;}
+.head .money{font-size:50rpx;}

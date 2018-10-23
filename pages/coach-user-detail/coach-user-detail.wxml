@@ -1,0 +1,64 @@
+<!--pages/coach-user-detail/coach-user-detail.wxml-->
+<view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">学员姓名</view>
+            <view class="weui-form-preview__value_in-hd">张金华</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">科目</view>
+            <view class="weui-form-preview__value">科目二</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">学习总时长</view>
+            <view class="weui-form-preview__value">20小时</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">进度</view>
+            <view class="weui-form-preview__value">
+                <view class="process">
+                    <span class="green">压离合-</span>
+                    <span class="">停车倒库-</span>
+                    <span class="">侧方停车-</span>
+                    <span class="">上坡起步-</span>
+                    <span class="">直角转弯-</span>
+                    <span class="">S路</span>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft">
+        <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">压离合通过</navigator>
+    </view>
+</view>
+
+<view class="h30"></view>
+<view class="weui-cells__title">科目进度</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">科目一是否通过</view>
+        <view class="weui-cell__ft">
+            <switch checked disabled />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">科目二是否通过</view>
+        <view class="weui-cell__ft">
+            <switch />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">科目三是否通过</view>
+        <view class="weui-cell__ft">
+            <switch />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">科目四是否通过</view>
+        <view class="weui-cell__ft">
+            <switch />
+        </view>
+    </view>
+</view>

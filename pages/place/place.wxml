@@ -1,0 +1,33 @@
+<!--pages/place/place.wxml-->
+<view class="place">
+    <view class="item">
+        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
+        <view class="title clearfix">
+            <view class="name">光谷训练场</view>
+            <view class="distance">
+                20M
+            </view>
+            <rich-text nodes="{{icon_place}}"></rich-text>
+        </view>
+    </view>
+    <view class="item">
+        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
+        <view class="title clearfix">
+            <view class="name">光谷训练场</view>
+            <view class="distance">
+                20M
+            </view>
+            <rich-text nodes="{{icon_place}}"></rich-text>
+        </view>
+    </view>
+    <view class="item">
+        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
+        <view class="title clearfix">
+            <view class="name">光谷训练场</view>
+            <view class="distance">
+                20M
+            </view>
+            <rich-text nodes="{{icon_place}}"></rich-text>
+        </view>
+    </view>
+</view>

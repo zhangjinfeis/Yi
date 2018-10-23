@@ -1,0 +1,5 @@
+/* pages/coach-user/coach-user.wxss */
+.list{padding:30rpx 0;}
+.list .item{padding:30rpx;border-bottom:#d9d9d9 1rpx solid;}
+.list .item .name{width:150rpx;}
+.list .item .type{width:150rpx; text-align: right;}

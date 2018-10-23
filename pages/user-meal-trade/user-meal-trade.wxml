@@ -1,0 +1,93 @@
+<!--pages/user-meal-trade/user-meal-trade.wxml-->
+<!--pages/news/news.wxml-->
+
+<view class="weui-navbar news-head">
+    <block wx:for="{{tabs}}" wx:key="*this">
+        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+        </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px;bottom:-1rpx; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+</view>
+
+<view class="h60"></view>
+<view class="h40"></view>
+
+<view class="" hidden="{{activeIndex != 0}}">
+    
+    <view class="trade">
+        <view class="item">
+            <view class="head flex">
+                <view class="serial flex-1">订单号:U144346456546</view>
+                <view class="status">待签约</view>
+            </view>
+            <view class="con">
+                <navigator url="/pages/meal-detail/meal-detail" class="order flex">
+                    <view class="pic">
+                        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
+                    </view>
+                    <view class="title flex-1">
+                        <view class="title-1">普通班C1</view>
+                        <view class="price">￥5300/人</view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="bottom flex">
+                <view class="time flex-1">下单时间:2018-09-03 22:15</view>
+                <view class="btns">
+                    <button size="mini" type="default">联系代理</button>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="head flex">
+                <view class="serial flex-1">订单号:U144346456546</view>
+                <view class="status red">待缴费</view>
+            </view>
+            <view class="con">
+                <navigator url="/pages/meal-detail/meal-detail" class="order flex">
+                    <view class="pic">
+                        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
+                    </view>
+                    <view class="title flex-1">
+                        <view class="title-1">普通班C1</view>
+                        <view class="price">￥5300/人</view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="bottom flex">
+                <view class="time flex-1">下单时间:2018-09-03 22:15</view>
+                <view class="btns">
+                    <button size="mini" type="primary">去付款</button>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="head flex">
+                <view class="serial flex-1">订单号:U144346456546</view>
+                <view class="status c999">报名成功</view>
+            </view>
+            <view class="con">
+                <navigator url="/pages/meal-detail/meal-detail" class="order flex">
+                    <view class="pic">
+                        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
+                    </view>
+                    <view class="title flex-1">
+                        <view class="title-1">普通班C1</view>
+                        <view class="price">￥5300/人</view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="bottom flex">
+                <view class="time flex-1">下单时间:2018-09-03 22:15</view>
+                <view class="btns">
+                    
+                </view>
+            </view>
+        </view>
+    </view>
+
+</view>
+<view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
+<view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>
+<view class="weui-tab__content" hidden="{{activeIndex != 3}}">选项四的内容</view>

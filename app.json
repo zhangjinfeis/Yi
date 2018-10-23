@@ -1,0 +1,48 @@
+{
+    "pages": [
+        "pages/news/news",
+        "pages/news-detail/news-detail",
+
+        "pages/index/index",
+
+        "pages/coach-index/coach-index",
+        "pages/coach-lesson-apply-detail/coach-lesson-apply-detail",
+        "pages/coach-lesson/coach-lesson",
+        "pages/coach-lesson-add/coach-lesson-add",
+        "pages/coach-user-detail/coach-user-detail",
+        "pages/coach-user-pre/coach-user-pre",
+        "pages/coach-user/coach-user",
+
+        "pages/agency-index/agency-index",
+        "pages/agency-commission/agency-commission",
+        "pages/agency-commission-apply/agency-commission-apply",
+        "pages/agency-user-detail/agency-user-detail",
+        "pages/agency-user/agency-user",
+
+        "pages/user-index/user-index",
+        "pages/user-phone/user-phone",
+        "pages/user-subject/user-subject",
+        "pages/user-subject-apply/user-subject-apply",
+        "pages/user-exam-apply/user-exam-apply",
+        "pages/user-exam/user-exam",
+        "pages/user-process/user-process",
+        "pages/user-my-coach/user-my-coach",
+        "pages/user-meal-trade/user-meal-trade",
+
+        "pages/pay-complete/pay-complete",
+        "pages/faq/faq",
+        
+        "pages/page-detail/page-detail",
+        "pages/meal-confirm/meal-confirm",
+        "pages/meal-detail/meal-detail",
+        "pages/place/place",
+        "pages/guestbook/guestbook"
+        
+    ],
+    "window": {
+        "navigationBarTitleText": "Yi学车",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
+    }
+}
