@@ -5,6 +5,8 @@
 .place .item{margin:0 0 30rpx 0;}
 .place .item image{width:100%;height:300rpx;}
 .place .item .title{}
-.place .item .title .name{ width: 500rpx; float: left;}
+.place .item .title .left{ width: 500rpx; float: left;}
+.place .item .title .left .title_1{}
+.place .item .title .left .title_2{font-size:24rpx;color:#999;}
 .place .item .title .distance{float: right;color:#666;}
 .place .item .title rich-text{float:right;color:#10aeff;}

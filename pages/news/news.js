@@ -7,14 +7,14 @@ Page({
      * 页面的初始数据
      */
     data: {
-        tabs: ["科目一", "科目二", "科目三", "科目三"],
+        tabs: ["科目一", "科目二", "科目三", "科目四"],
         activeIndex: 0,
         sliderOffset: 0,
         sliderLeft: 0,
 
         list_0: [],
-        list_0_page:1,
-        list_0_bottom:0,
+        list_0_page: 1,
+        list_0_bottom: 0,
 
         list_1: [],
         list_1_page: 1,
@@ -28,8 +28,8 @@ Page({
         list_3_page: 1,
         list_3_bottom: 0,
 
-        pageSize:7,
-        cate_id:9
+        pageSize: 7,
+        cate_id: 9
     },
 
     /**
@@ -39,7 +39,10 @@ Page({
         var that = this;
 
         //加载默认数据
-        this.scrollMore({ });
+        this.scrollMore({
+            page: this.data.list_0_page,
+            pageSize: this.data.pageSize
+        });
 
 
         wx.getSystemInfo({
@@ -56,23 +59,86 @@ Page({
     /**
      * 列表加载更多
      */
-    scrollMore:function(param){
+    scrollMore: function(param) {
+        //到达底部不请求
+        switch (this.data.activeIndex) {
+            case (0):
+                if (this.data.list_0_bottom) {
+                    return false;
+                }
+                break;
+            case (1):
+                if (this.data.list_1_bottom) {
+                    return false;
+                }
+                break;
+            case (2):
+                if (this.data.list_2_bottom) {
+                    return false;
+                }
+                break;
+            case (3):
+                if (this.data.list_3_bottom) {
+                    return false;
+                }
+                break;
+        }
         var that = this;
-        
         wx.request({
             url: app.globalData.domain + '/api/skill/skill_list',
-            data: { page: param.page, pageSize: param.pageSize,cate_id:this.data.cate_id},
-            method:"post",
-            success:function(res){
-                switch (that.data.activeIndex) {
-                    case (0): 
-                        that.setData({ list_0: that.data.list_0.concat(res.data.data) });
-                        break;
-                    case (1): that.setData({ list_1: that.data.list_1.concat(res.data.data) }); break;
-                    case (2): that.setData({ list_2: that.data.list_2.concat(res.data.data) }); break;
-                    case (3): that.setData({ list_3: that.data.list_3.concat(res.data.data) }); break;
+            data: {
+                page: param.page,
+                pageSize: param.pageSize,
+                cate_id: this.data.cate_id
+            },
+            method: "post",
+            success: function(res) {
+                if(res.data.code != 200){
+                    return false;
                 }
-            }    
+                switch (that.data.activeIndex) {
+                    case (0):
+                        that.setData({
+                            list_0: that.data.list_0.concat(res.data.data)
+                        });
+                        //是否到底部
+                        if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.list_0_page) {
+                            that.setData({
+                                list_0_bottom: 1
+                            });
+                        }
+                        break;
+                    case (1):
+                        that.setData({
+                            list_1: that.data.list_1.concat(res.data.data)
+                        });
+                        //是否到底部
+                        if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.list_1_page) {
+                            that.setData({
+                                list_1_bottom: 1
+                            });
+                        }
+                        break;
+                    case (2):
+                        that.setData({
+                            list_2: that.data.list_2.concat(res.data.data)
+                        });
+                        //是否到底部
+                        if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.list_2_page) {
+                            that.setData({ list_2_bottom: 1 });
+                        }
+                        break;
+                    case (3):
+                        that.setData({
+                            list_3: that.data.list_3.concat(res.data.data)
+                        });
+                        //是否到底部
+                        if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.list_3_page) {
+                            that.setData({ list_3_bottom: 1 });
+                        }
+                        break;
+                }
+            }
         })
     },
 
@@ -80,35 +146,55 @@ Page({
     /**
      * 选项卡切换
      */
-    tabClick: function (e) {
+    tabClick: function(e) {
         this.setData({
             sliderOffset: e.currentTarget.offsetLeft,
             activeIndex: parseInt(e.currentTarget.id),
         });
-        
+
         switch (this.data.activeIndex) {
-            case (0): 
-                this.setData({ 'cate_id': 9 });
-                if(!this.data.list_0.length){
-                    this.scrollMore({page:this.data.list_0_page,pageSize:this.data.pageSize});
+            case (0):
+                this.setData({
+                    'cate_id': 9
+                });
+                if (!this.data.list_0.length) {
+                    this.scrollMore({
+                        page: this.data.list_0_page,
+                        pageSize: this.data.pageSize
+                    });
                 };
                 break;
-            case (1): 
-                this.setData({ 'cate_id': 10 });
+            case (1):
+                this.setData({
+                    'cate_id': 10
+                });
                 if (!this.data.list_1.length) {
-                    this.scrollMore({ page: this.data.list_1_page, pageSize: this.data.pageSize });
+                    this.scrollMore({
+                        page: this.data.list_1_page,
+                        pageSize: this.data.pageSize
+                    });
                 };
                 break;
-            case (2): 
-                this.setData({ 'cate_id': 11 });
+            case (2):
+                this.setData({
+                    'cate_id': 11
+                });
                 if (!this.data.list_2.length) {
-                    this.scrollMore({ page: this.data.list_2_page, pageSize: this.data.pageSize });
+                    this.scrollMore({
+                        page: this.data.list_2_page,
+                        pageSize: this.data.pageSize
+                    });
                 };
                 break;
-            case (3): 
-                this.setData({ 'cate_id': 12 });
+            case (3):
+                this.setData({
+                    'cate_id': 12
+                });
                 if (!this.data.list_3.length) {
-                    this.scrollMore({ page: this.data.list_3_page, pageSize: this.data.pageSize });
+                    this.scrollMore({
+                        page: this.data.list_3_page,
+                        pageSize: this.data.pageSize
+                    });
                 };
                 break;
         }
@@ -158,22 +244,41 @@ Page({
     onReachBottom: function() {
         switch (this.data.activeIndex) {
             case (0):
-                
-                this.setData({ 'list_0_page': this.data.list_0_page+1 });
-                console.log(this.data.list_0_page);
-                this.scrollMore({ page: this.data.list_0_page, pageSize: this.data.pageSize });
+
+                this.setData({
+                    'list_0_page': this.data.list_0_page + 1
+                });
+                this.scrollMore({
+                    page: this.data.list_0_page,
+                    pageSize: this.data.pageSize
+                });
                 break;
             case (1):
-                this.setData({ 'list_1_page': this.data.list_1_page + 1 });
-                this.scrollMore({ page: this.data.list_1_page, pageSize: this.data.pageSize });
+                this.setData({
+                    'list_1_page': this.data.list_1_page + 1
+                });
+                this.scrollMore({
+                    page: this.data.list_1_page,
+                    pageSize: this.data.pageSize
+                });
                 break;
             case (2):
-                this.setData({ 'list_2_page': this.data.list_2_page + 1 });
-                this.scrollMore({ page: this.data.list_2_page, pageSize: this.data.pageSize });
+                this.setData({
+                    'list_2_page': this.data.list_2_page + 1
+                });
+                this.scrollMore({
+                    page: this.data.list_2_page,
+                    pageSize: this.data.pageSize
+                });
                 break;
             case (3):
-                this.setData({ 'list_3_page': this.data.list_3_page + 1 });
-                this.scrollMore({ page: this.data.list_3_page, pageSize: this.data.pageSize });
+                this.setData({
+                    'list_3_page': this.data.list_3_page + 1
+                });
+                this.scrollMore({
+                    page: this.data.list_3_page,
+                    pageSize: this.data.pageSize
+                });
                 break;
         }
     },
@@ -187,7 +292,7 @@ Page({
 
 
 
-    
+
 
 
 })

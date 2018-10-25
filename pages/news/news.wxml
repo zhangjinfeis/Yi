@@ -1,7 +1,7 @@
 <!--pages/news/news.wxml-->
 
 <view class="weui-navbar news-head">
-    <block wx:for="{{tabs}}" wx:key="*this">
+    <block wx:for="{{tabs}}" wx:key="index">
         <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
             <view class="weui-navbar__title">{{item}}</view>
         </view>
@@ -15,16 +15,16 @@
 <view class="" hidden="{{activeIndex != 0}}">
 
     <view class="news-stick clearfix">
-        <block wx:for="{{list_0}}">
-            <navigator url="/pages/news-detail/news-detail" class="item" wx:if="{{index<4}}">
+        <block wx:for="{{list_0}}" wx:key="index">
+            <navigator url="/pages/news-detail/news-detail?id={{item.id}}" class="item" wx:if="{{index<4}}">
                 <image src="{{item.thumb}}"></image>
                 <view class="title">{{item.title}}</view>
             </navigator>
         </block>
     </view>
     <view class="news-list">
-        <block wx:for="{{list_0}}">
-            <navigator url="/pages/news-detail/news-detail" class="item clearfix" wx:if="{{index>=4}}">
+        <block wx:for="{{list_0}}" wx:key="index">
+            <navigator url="/pages/news-detail/news-detail?id={{item.id}}" class="item clearfix" wx:if="{{index>=4}}">
                 <image src="{{item.thumb}}"></image>
                 <view class="right">
                     <view class="title">{{item.title}}</view>
@@ -44,16 +44,16 @@
 </view>
 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
     <view class="news-stick clearfix">
-        <block wx:for="{{list_1}}">
-            <navigator url="/pages/news-detail/news-detail" class="item" wx:if="{{index<4}}">
+        <block wx:for="{{list_1}}" wx:key="index">
+            <navigator url="/pages/news-detail/news-detail?id={{item.id}}" class="item" wx:if="{{index<4}}">
                 <image src="{{item.thumb}}"></image>
                 <view class="title">{{item.title}}</view>
             </navigator>
         </block>
     </view>
     <view class="news-list">
-        <block wx:for="{{list_1}}">
-            <navigator url="/pages/news-detail/news-detail" class="item clearfix" wx:if="{{index>=4}}">
+        <block wx:for="{{list_1}}" wx:key="index">
+            <navigator url="/pages/news-detail/news-detail?id={{item.id}}" class="item clearfix" wx:if="{{index>=4}}">
                 <image src="{{item.thumb}}"></image>
                 <view class="right">
                     <view class="title">{{item.title}}</view>
@@ -62,19 +62,27 @@
             </navigator>
         </block>
     </view>
+    <view class="weui-loadmore" hidden="{{list_1_bottom}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" hidden="{{!list_1_bottom}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到达底线</view>
+    </view>
+
 </view>
 <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
     <view class="news-stick clearfix">
-        <block wx:for="{{list_2}}">
-            <navigator url="/pages/news-detail/news-detail" class="item" wx:if="{{index<4}}">
+        <block wx:for="{{list_2}}" wx:key="index">
+            <navigator url="/pages/news-detail/news-detail?id={{item.id}}" class="item" wx:if="{{index<4}}">
                 <image src="{{item.thumb}}"></image>
                 <view class="title">{{item.title}}</view>
             </navigator>
         </block>
     </view>
     <view class="news-list">
-        <block wx:for="{{list_2}}">
-            <navigator url="/pages/news-detail/news-detail" class="item clearfix" wx:if="{{index>=4}}">
+        <block wx:for="{{list_2}}" wx:key="index">
+            <navigator url="/pages/news-detail/news-detail?id={{item.id}}" class="item clearfix" wx:if="{{index>=4}}">
                 <image src="{{item.thumb}}"></image>
                 <view class="right">
                     <view class="title">{{item.title}}</view>
@@ -83,19 +91,27 @@
             </navigator>
         </block>
     </view>
+    <view class="weui-loadmore" hidden="{{list_2_bottom}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" hidden="{{!list_2_bottom}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到达底线</view>
+    </view>
+
 </view>
 <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
     <view class="news-stick clearfix">
-        <block wx:for="{{list_3}}">
-            <navigator url="/pages/news-detail/news-detail" class="item" wx:if="{{index<4}}">
+        <block wx:for="{{list_3}}" wx:key="index">
+            <navigator url="/pages/news-detail/news-detail?id={{item.id}}" class="item" wx:if="{{index<4}}">
                 <image src="{{item.thumb}}"></image>
                 <view class="title">{{item.title}}</view>
             </navigator>
         </block>
     </view>
     <view class="news-list">
-        <block wx:for="{{list_3}}">
-            <navigator url="/pages/news-detail/news-detail" class="item clearfix" wx:if="{{index>=4}}">
+        <block wx:for="{{list_3}}" wx:key="index">
+            <navigator url="/pages/news-detail/news-detail?id={{item.id}}" class="item clearfix" wx:if="{{index>=4}}">
                 <image src="{{item.thumb}}"></image>
                 <view class="right">
                     <view class="title">{{item.title}}</view>
@@ -103,5 +119,12 @@
                 </view>
             </navigator>
         </block>
+    </view>
+    <view class="weui-loadmore" hidden="{{list_3_bottom}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" hidden="{{!list_3_bottom}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到达底线</view>
     </view>
 </view>

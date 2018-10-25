@@ -1,33 +1,18 @@
 <!--pages/place/place.wxml-->
 <view class="place">
-    <view class="item">
-        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
+    <block wx:for="{{list}}" wx:key="unique">
+    <view class="item" data-lat="{{item.lat}}" data-lng="{{item.lng}}" bindtap='bindOpenLocation'>
+        <image src="{{item.thumb}}"></image>
         <view class="title clearfix">
-            <view class="name">光谷训练场</view>
+            <view class="left">
+                <view class="title_1">{{item.name}}</view>
+                <view class="title_2">{{item.address_detail}}</view>
+            </view>
             <view class="distance">
-                20M
+                {{item.distance}}km
             </view>
             <rich-text nodes="{{icon_place}}"></rich-text>
         </view>
     </view>
-    <view class="item">
-        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
-        <view class="title clearfix">
-            <view class="name">光谷训练场</view>
-            <view class="distance">
-                20M
-            </view>
-            <rich-text nodes="{{icon_place}}"></rich-text>
-        </view>
-    </view>
-    <view class="item">
-        <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
-        <view class="title clearfix">
-            <view class="name">光谷训练场</view>
-            <view class="distance">
-                20M
-            </view>
-            <rich-text nodes="{{icon_place}}"></rich-text>
-        </view>
-    </view>
+    </block>
 </view>

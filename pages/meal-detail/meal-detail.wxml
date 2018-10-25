@@ -1,17 +1,17 @@
 <!--pages/meal-detail/meal-detail.wxml-->
 <view class="meal-head flex">
-    <view class="pic"><image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image></view>
+    <view class="pic"><image src="{{detail.thumb}}"></image></view>
     <view class="center flex-1">
-        <view class="name">C1普通班</view>
-        <view class="price">￥5300/人</view>
-        <view class="subname">包含所有补考费用，无忧拿证，无忧拿证无忧拿证</view>
+        <view class="name">{{detail.title}}</view>
+        <view class="price">￥{{detail.price}}/人</view>
+        <view class="subname">{{detail.subtitle}}</view>
     </view>
     <view class="right">
-        <navigator url="/pages/meal-confirm/meal-confirm" class="btn">立即报名</navigator>
+        <navigator url="/pages/meal-confirm/meal-confirm?meal_id={{detail.id}}" class="btn">立即报名</navigator>
     </view>
 </view>
 
 <view class="weui-cells__title">套餐详情</view>
 <view class="meal-body">
-    sdaf 
+    <rich-text nodes="{{detail.body}}"></rich-text>
 </view>

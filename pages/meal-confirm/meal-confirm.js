@@ -6,53 +6,62 @@ Page({
      * 页面的初始数据
      */
     data: {
-        domain: app.globalData.domain,
+        detail:{},
 
-        place: ['光谷练车场', '光谷练车场', '光谷练车场'],
+        place: [],
+        placeId:0,
 
-        showTopTips: false,
-
-        radioItems: [{
-                name: 'cell standard',
-                value: '0'
-            },
-            {
-                name: 'cell standard',
-                value: '1',
-                checked: true
-            }
-        ],
-        checkboxItems: [{
-                name: 'standard is dealt for u.',
-                value: '0',
-                checked: true
-            },
-            {
-                name: 'standard is dealicient for u.',
-                value: '1'
-            }
-        ],
-
-        date: "2016-09-01",
-        time: "12:01",
-
-        countryCodes: ["+86", "+80", "+84", "+87"],
-        countryCodeIndex: 0,
-
-        countries: ["中国", "美国", "英国"],
-        countryIndex: 0,
-
-        accounts: ["微信号", "QQ", "Email"],
-        accountIndex: 0,
-
-        isAgree: false
+        
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        //载入套餐信息
+        this.loadDetail(options.meal_id);
+        //载入学车场地
+        this.loadPlace();
+    },
 
+    loadDetail: function (id) {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/meal/meal',
+            method: 'post',
+            data: {
+                meal_id: id
+            },
+            success: function (res) {
+                console.log(res.data.data);
+                that.setData({
+                    detail: res.data.data
+                });
+            }
+        })
+    },
+
+    loadPlace:function(){
+        var that = this;
+        wx.getLocation({
+            type: 'gcj02',
+            success(res) {
+                wx.request({
+                    url: app.globalData.domain + '/api/plade/plade_list',
+                    method: 'post',
+                    data: {
+                        lat: res.latitude,
+                        lng: res.longitude
+                    },
+                    success: function (res) {
+                        console.log(res.data.data);
+                        that.setData({
+                            place: res.data.data
+                        });
+                    }
+                })
+            }
+        })
     },
 
     /**

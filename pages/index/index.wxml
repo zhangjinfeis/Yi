@@ -51,50 +51,19 @@
 <!--学车套餐-->
 <view class="meal-head"><view class="in">学车套餐</view></view>
 <view class="meal-list">
-    <navigator url="/pages/meal-detail/meal-detail" class="item flex">
+    <block wx:for="{{mealList}}" wx:key="unique">
+    <navigator url="/pages/meal-detail/meal-detail?id={{item.id}}" class="item flex">
         <view class="pic">
-            <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
+            <image src="{{item.thumb}}"></image>
         </view>
         <view class="title flex-1">
-            <view class="title-1">普通班C1</view>
-            <view class="title-2">包含所有补考费用，无忧拿证，无忧拿证，无忧拿证</view>
+            <view class="title-1">{{item.title}}</view>
+            <view class="title-2">{{item.subtitle}}</view>
         </view>
-        <view class="price">￥5300/人</view>
+        <view class="price">￥{{item.price}}/人</view>
         <view class="arrow"></view>
     </navigator>
-    <navigator url="/pages/meal-detail/meal-detail" class="item flex">
-        <view class="pic">
-            <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
-        </view>
-        <view class="title flex-1">
-            <view class="title-1">普通班C1</view>
-            <view class="title-2">包含所有补考费用，无忧拿证，无忧拿证，无忧拿证</view>
-        </view>
-        <view class="price">￥5300/人</view>
-        <view class="arrow"></view>
-    </navigator>
-    <navigator url="/pages/meal-detail/meal-detail" class="item flex">
-        <view class="pic">
-            <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
-        </view>
-        <view class="title flex-1">
-            <view class="title-1">普通班C1</view>
-            <view class="title-2">包含所有补考费用，无忧拿证，无忧拿证，无忧拿证</view>
-        </view>
-        <view class="price">￥5300/人</view>
-        <view class="arrow"></view>
-    </navigator>
-    <navigator url="/pages/meal-detail/meal-detail" class="item flex">
-        <view class="pic">
-            <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
-        </view>
-        <view class="title flex-1">
-            <view class="title-1">普通班C1</view>
-            <view class="title-2">包含所有补考费用，无忧拿证，无忧拿证，无忧拿证</view>
-        </view>
-        <view class="price">￥5300/人</view>
-        <view class="arrow"></view>
-    </navigator>
+    </block>
 </view>
 
 <view class="h60"></view>

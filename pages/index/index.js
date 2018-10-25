@@ -21,6 +21,8 @@ Page({
             circular: true,
         },
 
+        mealList:[],
+
 
 
     },
@@ -31,6 +33,10 @@ Page({
     onLoad: function(options) {
         var userInfo = user.get_info();
         console.log(userInfo);
+
+
+        //加载套餐列表
+        this.loadMeal();
         /*
         wx.login({
             success: function(res) {
@@ -54,6 +60,23 @@ Page({
           });
           */
 
+    },
+
+    loadMeal:function(){
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/meal/meal_list',
+            method: 'post',
+            data: {
+                page: 1,
+                pageSize: 100
+            },
+            success: function (res) {
+                that.setData({
+                    mealList: res.data.data
+                });
+            }
+        })
     },
 
     /**

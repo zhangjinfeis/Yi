@@ -1,7 +1,7 @@
 <view class="meal-confirm-head">
-    <image src="{{domain}}/resources/mp/images/meal-pic.jpg"></image>
-    <view class="name">C1普通班</view>
-    <view class="price">￥5300/人</view>
+    <image src="{{detail.thumb}}"></image>
+    <view class="name">{{detail.title}}</view>
+    <view class="price">￥{{detail.price}}/人</view>
 </view>
 
 
@@ -29,8 +29,8 @@
             <view class="weui-label"><span class="red">*</span>学车场地</view>
         </view>
         <view class="weui-cell__bd">
-            <picker mode="selector" value="0" range="{{place}}" bindchange="bindDateChange">
-                <view class="weui-input">{{place[0]}}</view>
+            <picker mode="selector" value="0" range="{{place}}" range-key='name' bindchange="bindDateChange">
+                <view class="weui-input">{{place[0]['name']}}</view>
             </picker>
         </view>
     </view>
