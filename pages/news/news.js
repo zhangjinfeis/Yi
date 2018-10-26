@@ -12,24 +12,9 @@ Page({
         sliderOffset: 0,
         sliderLeft: 0,
 
-        list_0: [],
-        list_0_page: 1,
-        list_0_bottom: 0,
-
-        list_1: [],
-        list_1_page: 1,
-        list_1_bottom: 0,
-
-        list_2: [],
-        list_2_page: 1,
-        list_2_bottom: 0,
-
-        list_3: [],
-        list_3_page: 1,
-        list_3_bottom: 0,
+        content: [],  //{list:  page:  is_bottom: }
 
         pageSize: 7,
-        cate_id: 9
     },
 
     /**
@@ -37,14 +22,31 @@ Page({
      */
     onLoad: function(options) {
         var that = this;
+        //初始化分类
+        wx.request({
+            url: app.globalData.domain + '/api/skill/skill_index',
+            method:'post',
+            success:function(res){
+                that.setData({
+                    tabs: res.data.data
+                });
+                var content = [];
+                for (var i = 0; i < res.data.data.length;i++){
+                    content.push({list:[],page:1,is_bottom:false});
+                }
+                that.setData({
+                    content: content
+                });
+                //console.log(that.data.content);
+                //加载默认数据
+                that.scrollMore({
+                    page: that.data.content[0].page,
+                    pageSize: that.data.pageSize
+                });
+            }
+        })
 
-        //加载默认数据
-        this.scrollMore({
-            page: this.data.list_0_page,
-            pageSize: this.data.pageSize
-        });
-
-
+        
         wx.getSystemInfo({
             success: function(res) {
                 that.setData({
@@ -61,82 +63,36 @@ Page({
      */
     scrollMore: function(param) {
         //到达底部不请求
-        switch (this.data.activeIndex) {
-            case (0):
-                if (this.data.list_0_bottom) {
-                    return false;
-                }
-                break;
-            case (1):
-                if (this.data.list_1_bottom) {
-                    return false;
-                }
-                break;
-            case (2):
-                if (this.data.list_2_bottom) {
-                    return false;
-                }
-                break;
-            case (3):
-                if (this.data.list_3_bottom) {
-                    return false;
-                }
-                break;
+        if (this.data.content[this.data.activeIndex].is_bottom){
+            return false;
         }
+
         var that = this;
         wx.request({
             url: app.globalData.domain + '/api/skill/skill_list',
             data: {
                 page: param.page,
                 pageSize: param.pageSize,
-                cate_id: this.data.cate_id
+                cate_id: this.data.tabs[this.data.activeIndex].id
             },
             method: "post",
             success: function(res) {
                 if(res.data.code != 200){
                     return false;
                 }
-                switch (that.data.activeIndex) {
-                    case (0):
-                        that.setData({
-                            list_0: that.data.list_0.concat(res.data.data)
-                        });
-                        //是否到底部
-                        if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.list_0_page) {
-                            that.setData({
-                                list_0_bottom: 1
-                            });
-                        }
-                        break;
-                    case (1):
-                        that.setData({
-                            list_1: that.data.list_1.concat(res.data.data)
-                        });
-                        //是否到底部
-                        if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.list_1_page) {
-                            that.setData({
-                                list_1_bottom: 1
-                            });
-                        }
-                        break;
-                    case (2):
-                        that.setData({
-                            list_2: that.data.list_2.concat(res.data.data)
-                        });
-                        //是否到底部
-                        if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.list_2_page) {
-                            that.setData({ list_2_bottom: 1 });
-                        }
-                        break;
-                    case (3):
-                        that.setData({
-                            list_3: that.data.list_3.concat(res.data.data)
-                        });
-                        //是否到底部
-                        if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.list_3_page) {
-                            that.setData({ list_3_bottom: 1 });
-                        }
-                        break;
+
+                var content = that.data.content;
+                content[that.data.activeIndex].list = that.data.content[that.data.activeIndex].list.concat(res.data.data);
+                that.setData({
+                    content: content
+                });
+                //是否到底部
+                if (Math.ceil(res.data.count / that.data.pageSize) <= that.data.content[that.data.activeIndex].page) {
+                    content = that.data.content;
+                    content[that.data.activeIndex].is_bottom = true;
+                    that.setData({
+                        content: content
+                    });
                 }
             }
         })
@@ -152,52 +108,12 @@ Page({
             activeIndex: parseInt(e.currentTarget.id),
         });
 
-        switch (this.data.activeIndex) {
-            case (0):
-                this.setData({
-                    'cate_id': 9
-                });
-                if (!this.data.list_0.length) {
-                    this.scrollMore({
-                        page: this.data.list_0_page,
-                        pageSize: this.data.pageSize
-                    });
-                };
-                break;
-            case (1):
-                this.setData({
-                    'cate_id': 10
-                });
-                if (!this.data.list_1.length) {
-                    this.scrollMore({
-                        page: this.data.list_1_page,
-                        pageSize: this.data.pageSize
-                    });
-                };
-                break;
-            case (2):
-                this.setData({
-                    'cate_id': 11
-                });
-                if (!this.data.list_2.length) {
-                    this.scrollMore({
-                        page: this.data.list_2_page,
-                        pageSize: this.data.pageSize
-                    });
-                };
-                break;
-            case (3):
-                this.setData({
-                    'cate_id': 12
-                });
-                if (!this.data.list_3.length) {
-                    this.scrollMore({
-                        page: this.data.list_3_page,
-                        pageSize: this.data.pageSize
-                    });
-                };
-                break;
-        }
+        if (!this.data.content[this.data.activeIndex].list.length) {
+            this.scrollMore({
+                page: this.data.content[this.data.activeIndex].page,
+                pageSize: this.data.pageSize
+            });
+        };
     },
 
 
@@ -242,45 +158,18 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function() {
-        switch (this.data.activeIndex) {
-            case (0):
 
-                this.setData({
-                    'list_0_page': this.data.list_0_page + 1
-                });
-                this.scrollMore({
-                    page: this.data.list_0_page,
-                    pageSize: this.data.pageSize
-                });
-                break;
-            case (1):
-                this.setData({
-                    'list_1_page': this.data.list_1_page + 1
-                });
-                this.scrollMore({
-                    page: this.data.list_1_page,
-                    pageSize: this.data.pageSize
-                });
-                break;
-            case (2):
-                this.setData({
-                    'list_2_page': this.data.list_2_page + 1
-                });
-                this.scrollMore({
-                    page: this.data.list_2_page,
-                    pageSize: this.data.pageSize
-                });
-                break;
-            case (3):
-                this.setData({
-                    'list_3_page': this.data.list_3_page + 1
-                });
-                this.scrollMore({
-                    page: this.data.list_3_page,
-                    pageSize: this.data.pageSize
-                });
-                break;
-        }
+        var content = this.data.content;
+        content[this.data.activeIndex].page = content[this.data.activeIndex].page+1;
+        this.setData({
+            content: content
+        });
+
+        this.scrollMore({
+            page: this.data.content[this.data.activeIndex].page,
+            pageSize: this.data.pageSize
+        });
+
     },
 
     /**

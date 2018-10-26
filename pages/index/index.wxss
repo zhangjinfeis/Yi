@@ -11,11 +11,6 @@
 .nav{margin:30rpx 0 0 0;padding:0 20rpx 30rpx 20rpx;}
 .nav .item{text-align: center;}
 .nav .item .img{margin:0 auto; display:block;width:100rpx;height:100rpx;border-radius:50rpx;}
-.nav .item .img-1{background:#ed612e;}
-.nav .item .img-2{background:#478ad1;}
-.nav .item .img-3{background:#954fdd;}
-.nav .item .img-4{background:#38c08a;}
-.nav .item .img-5{background:#e24748;}
 .nav .item .img image{width:50rpx;height:50rpx;margin:25rpx 0 0 0;}
 .nav .item .title{margin:5rpx 0 0 0;font-size:28rpx;color:#555;}
 

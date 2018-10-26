@@ -19,7 +19,7 @@
 <view class="nav flex"> 
     <block wx:for="{{nav}}" wx:key="unique">
     <navigator url="{{item.url}}" class="item flex-1">
-        <view class="img img-1"><image src="{{item.thumb}}"></image></view>
+        <view class="img" style="background:{{item.title_color}}"><image src="{{item.thumb}}"></image></view>
         <view class="title">{{item.name}}</view>
     </navigator>
     </block>
