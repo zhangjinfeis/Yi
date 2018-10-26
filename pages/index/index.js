@@ -7,21 +7,22 @@ Page({
      */
     data: {
         domain: app.globalData.domain,
+        nav: [],
         //banner
         banner: {
-            imgUrls: [
-                'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-                'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-                'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-            ],
+            list: [],
             indicatorDots: true,
             autoplay: true,
             interval: 5000,
             duration: 500,
             circular: true,
         },
-
-        mealList:[],
+        //套餐列表
+        mealList: [],
+        //学车流程id
+        flowId: 0,
+        //安全保障id
+        insuranceId: 0,
 
 
 
@@ -34,35 +35,27 @@ Page({
         var userInfo = user.get_info();
         console.log(userInfo);
 
+        //加载首页导航
+        this.loadNav();
 
         //加载套餐列表
         this.loadMeal();
-        /*
-        wx.login({
-            success: function(res) {
-                console.log(res.code);
 
-            }
-        });
-        */
-        /*
-        wx.getUserInfo({
-            success: function(res) {
-                console.log(res);
-            }
-        });
-        */
-        /*
-          wx.checkSession({
-              success:function(res){
-                  console.log(res.errMsg);
-              }
-          });
-          */
+        //加载banner
+        this.loadBanner();
+
+        //学车流程
+        this.loadFlow();
+
+        //安全保障
+        this.loadInsurance();
 
     },
 
-    loadMeal:function(){
+    /**
+     * 套餐列表
+     */
+    loadMeal: function() {
         var that = this;
         wx.request({
             url: app.globalData.domain + '/api/meal/meal_list',
@@ -71,9 +64,73 @@ Page({
                 page: 1,
                 pageSize: 100
             },
-            success: function (res) {
+            success: function(res) {
                 that.setData({
                     mealList: res.data.data
+                });
+            }
+        })
+    },
+
+    /**
+     * 首页导航
+     */
+    loadNav: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/nav/nav',
+            method: 'post',
+            success: function(res) {
+                that.setData({
+                    'nav': res.data.data
+                });
+            }
+        })
+    },
+
+    /**
+     * banner图
+     */
+    loadBanner: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/banner/banner',
+            method: 'post',
+            success: function(res) {
+                that.setData({
+                    'banner.list': res.data.data
+                });
+            }
+        })
+    },
+
+    /**
+     * 学车流程
+     */
+    loadFlow: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/flow/flow',
+            method: 'post',
+            success: function(res) {
+                that.setData({
+                    'flowId': res.data.data.id
+                });
+            }
+        })
+    },
+
+    /**
+     * 学车流程
+     */
+    loadInsurance: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/insurance/insurance',
+            method: 'post',
+            success: function(res) {
+                that.setData({
+                    'insuranceId': res.data.data.id
                 });
             }
         })

@@ -1,7 +1,7 @@
 {
     "pages": [
-        
         "pages/index/index",
+        "pages/faq/faq",
         "pages/news/news",
         "pages/news-detail/news-detail",
         "pages/place/place",
@@ -27,7 +27,6 @@
         "pages/user-my-coach/user-my-coach",
         "pages/user-meal-trade/user-meal-trade",
         "pages/pay-complete/pay-complete",
-        "pages/faq/faq",
         "pages/page-detail/page-detail",
         "pages/meal-confirm/meal-confirm",
         "pages/meal-detail/meal-detail",

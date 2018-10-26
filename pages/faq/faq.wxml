@@ -1,31 +1,23 @@
 <!--pages/faq/faq.wxml-->
 <view class="faq-list">
-    <view class="item">
-        <view class="head" bindtap="toggle_item">常见问题1<view class="arrow"></view></view>
-        <view class="content" hidden='1'>
-            隐私的保护，为了给您提供更准确、更有个性化的服务，请您仔细阅读如下声明。当您访问蚂蚁学车网站或使用蚂蚁学车提供的服务前，您需要同意隐私政策中具体个人信息的收集、使用、公布和以其它形式使用和披露您的个人信息等内容。但蚂蚁学车会以高度的勤勉、审慎义
-        </view>
-    </view>
 
+    <block wx:for="{{list}}" wx:key="unique">
     <view class="item">
-        <view class="head head-on">常见问题2<view class="arrow"></view></view>
-        <view class="content">
-            隐私的保护，为了给您提供更准确、更有个性化的服务，请您仔细阅读如下声明。当您访问蚂蚁学车网站或使用蚂蚁学车提供的服务前，您需要同意隐私政策中具体个人信息的收集、使用、公布和以其它形式使用和披露您的个人信息等内容。但蚂蚁学车会以高度的勤勉、审慎义
+        <view class="head {{item.is_open?'head-on':''}}" data-index="{{index}}" data-open="{{item.is_open}}" bindtap="toggleItem">{{item.title}}
+            <view class="arrow"></view>
+        </view>
+        <view class="content" hidden='{{!item.is_open}}'>
+            <rich-text nodes="{{item.body}}"></rich-text>
         </view>
     </view>
+    </block>
 
-    <view class="item">
-        <view class="head" bindtap="toggle_item">常见问题3<view class="arrow"></view></view>
-        <view class="content" hidden='1'>
-            隐私的保护，为了给您提供更准确、更有个性化的服务，请您仔细阅读如下声明。当您访问蚂蚁学车网站或使用蚂蚁学车提供的服务前，您需要同意隐私政策中具体个人信息的收集、使用、公布和以其它形式使用和披露您的个人信息等内容。但蚂蚁学车会以高度的勤勉、审慎义
-        </view>
-    </view>
+</view>
 
-    <view class="item">
-        <view class="head" bindtap="toggle_item">常见问题4<view class="arrow"></view></view>
-        <view class="content" hidden='1'>
-            隐私的保护，为了给您提供更准确、更有个性化的服务，请您仔细阅读如下声明。当您访问蚂蚁学车网站或使用蚂蚁学车提供的服务前，您需要同意隐私政策中具体个人信息的收集、使用、公布和以其它形式使用和披露您的个人信息等内容。但蚂蚁学车会以高度的勤勉、审慎义
-        </view>
-    </view>
-    
+<view class="weui-loadmore" hidden="{{list_bottom}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" hidden="{{!list_bottom}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到达底线</view>
 </view>

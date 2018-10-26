@@ -1,7 +1,7 @@
 /* pages/faq/faq.wxss */
 .faq-list{padding:30rpx;}
 .faq-list .item{}
-.faq-list .item .head{height:80rpx;line-height:80rpx;border-bottom:#d9d9d9 1rpx solid;position:relative;}
+.faq-list .item .head{height:100rpx;line-height:100rpx;border-bottom:#d9d9d9 1rpx solid;position:relative;}
 .faq-list .item .head:after{content:" ";display:inline-block;height:6px;width:6px;border-width:2px 2px 0 0;border-color:#c8c8cd;border-style:solid;-webkit-transform:matrix(-.71,.71,-.71,-.71,0,0);transform:matrix(-.71,.71,-.71,-.71,0,0);right:10rpx;position:absolute;top:50%;margin-top:-8rpx;}
 .faq-list .item .head-on:after{-webkit-transform:matrix(.71,-.71,.71,.71,0,0);transform:matrix(.71,-.71,.71,.71,0,0);margin-top:0rpx;}
 .faq-list .item .content{padding:20rpx 0;color:#555;}
