@@ -1,0 +1,15 @@
+<!--pages/login.wxml-->
+<view class="login-img">
+    <image src="{{userInfo.avatarUrl}}"></image>
+</view>
+
+<view class="login-nickname">{{userInfo.nickName}}</view>
+
+<view class="login-note">授权将获得您的公开信息（头像，昵称等）</view>
+
+<view class="login-btn1">
+    <button type ="primary" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" loading="{{btnLoading}}">{{btnText}}</button>
+</view>
+
+
+

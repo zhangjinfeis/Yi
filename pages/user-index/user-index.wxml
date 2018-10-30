@@ -5,13 +5,10 @@
 <!--头部-->
 <navigator class="user-head clearfix">
     <view class="pic">
-        <button wx:if="{{!userInfo.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像</button>
-        <block wx:else>
-            <image src="{{userInfo.avatarUrl}}"></image>
-        </block>
+        <image src="{{userInfo.avatarUrl}}"></image>
     </view>
     <view class="center">
-        <view class="nickname">{{userInfo.nickName?userInfo.nickName:'待授权'}}</view>
+        <view class="nickname">{{userInfo.nickName}}</view>
         <view class="score">学习总时长：{{userInfo.commission?userInfo.commission:'0'}}</view>
     </view>
     <view class="arrow"></view>
@@ -20,17 +17,17 @@
 <!--订单-->
 <view class="weui-cells__title">购买套餐</view>
 <view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/user-meal-trade/user-meal-trade" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="/pages/user-meal-trade/user-meal-trade?index=0" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">全部订单</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 </view>
 <view class="order-3 flex">
-    <navigator url="/pages/user-meal-trade/user-meal-trade" class="item flex-1">
-        待签约<view class="weui-badge badge">8</view>
+    <block wx:for="{{tradeMenu}}" wx:key="uniq">
+    <navigator url="/pages/user-meal-trade/user-meal-trade?index={{index+1}}" class="item flex-1" wx:if="{{index < 3}}">
+        {{item.name}}<view class="weui-badge badge" wx:if="{{index<2 && item.total>0}}">{{item.total}}</view>
     </navigator>
-    <navigator url="/pages/user-meal-trade/user-meal-trade" class="item flex-1">待缴费</navigator>
-    <navigator url="/pages/user-meal-trade/user-meal-trade" class="item flex-1">报名成功</navigator>
+    </block>
 </view>
 
 <!--体检-->
@@ -79,11 +76,11 @@
         <view class="weui-cell__bd">意见反馈</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-    <navigator url="/pages/page-detail/page-detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="/pages/page-detail/page-detail?id={{agreementId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">保证协议</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-    <navigator url="/pages/page-detail/page-detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="/pages/page-detail/page-detail?id={{aboutId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">关于我们</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>

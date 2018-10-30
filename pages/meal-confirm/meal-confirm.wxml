@@ -12,7 +12,7 @@
             <view class="weui-label"><span class="red">*</span>姓名</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入真实姓名"/>
+            <input class="weui-input" placeholder="请输入真实姓名" data-inputname="name"  bindinput="bindKeyInput"/>
         </view>
     </view>
     
@@ -21,7 +21,7 @@
             <view class="weui-label">推荐码</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入推荐码"/>
+            <input class="weui-input" placeholder="请输入推荐码" data-inputname="code"  bindinput="bindKeyInput"/>
         </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -29,8 +29,8 @@
             <view class="weui-label"><span class="red">*</span>学车场地</view>
         </view>
         <view class="weui-cell__bd">
-            <picker mode="selector" value="0" range="{{place}}" range-key='name' bindchange="bindDateChange">
-                <view class="weui-input">{{place[0]['name']}}</view>
+            <picker mode="selector" value="{{pladeIndex}}" range="{{plade}}" range-key='name' bindchange="bindPladeChange">
+                <view class="weui-input">{{plade[pladeIndex].name}}</view>
             </picker>
         </view>
     </view>
@@ -39,7 +39,7 @@
             <view class="weui-label">就读学校</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入就读学校"/>
+            <input class="weui-input" placeholder="请输入就读学校" data-inputname="school"  bindinput="bindKeyInput"/>
         </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -47,7 +47,7 @@
             <view class="weui-label"><span class="red">*</span>联系地址</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入联系地址"/>
+            <input class="weui-input" placeholder="请输入联系地址" data-inputname="address"  bindinput="bindKeyInput"/>
         </view>
     </view>
     <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -55,27 +55,24 @@
             <view class="weui-label"><span class="red">*</span>手机号</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入手机号" />
+            <input class="weui-input" type="number" placeholder="请输入手机号" data-inputname="phone"  bindinput="bindKeyInput" />
         </view>
         <view class="weui-cell__ft">
-            <view class="weui-vcode-btn">获取验证码</view>
+            <view class="weui-vcode-btn" bindtap='bindSmsCode'>{{code_text}}</view>
         </view>
     </view>
-    <view class="weui-cell weui-cell_input weui-cell_vcode">
+    <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
             <view class="weui-label">验证码</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入验证码" />
-        </view>
-        <view class="weui-cell__ft">
-            <image class="weui-vcode-img" src="../images/vcode.jpg" style="width: 108px"></image>
+            <input class="weui-input" type="number" placeholder="请输入验证码"  data-inputname="sms_code"  bindinput="bindKeyInput"/>
         </view>
     </view>
 </view>
 <view class="weui-cells__tips"><span class="red">*</span>为必填项</view>
 <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="showTopTips">提交订单</button>
+    <button class="weui-btn" type="primary" bindtap="bindSubmit">提交订单</button>
 </view>
 
 <view class="h60"></view>

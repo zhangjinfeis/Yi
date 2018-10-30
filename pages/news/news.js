@@ -7,7 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        tabs: ["科目一", "科目二", "科目三", "科目四"],
+        tabs: [],
         activeIndex: 0,
         sliderOffset: 0,
         sliderLeft: 0,
@@ -21,6 +21,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
         var that = this;
         //初始化分类
         wx.request({

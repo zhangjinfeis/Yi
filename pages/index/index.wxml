@@ -18,10 +18,32 @@
 <!--首页导航-->
 <view class="nav flex"> 
     <block wx:for="{{nav}}" wx:key="unique">
-    <navigator url="{{item.url}}" class="item flex-1">
-        <view class="img" style="background:{{item.title_color}}"><image src="{{item.thumb}}"></image></view>
-        <view class="title">{{item.name}}</view>
-    </navigator>
+        <block wx:if="{{index == 3}}">
+            <navigator url="{{item.url}}" class="item flex-1" wx:if="{{coachInfo.id}}">
+                <view class="img" style="background:{{item.title_color}}"><image src="{{item.thumb}}"></image></view>
+                <view class="title">{{item.name}}</view>
+            </navigator>
+            <view url="{{item.url}}" class="item flex-1" bindtap='bindNoCoach' wx:else>
+                <view class="img" style="background:{{item.title_color}}"><image src="{{item.thumb}}"></image></view>
+                <view class="title">{{item.name}}</view>
+            </view>
+        </block>
+
+        <block wx:elif="{{index == 4}}">
+            <navigator url="{{item.url}}" class="item flex-1" wx:if="{{agencyInfo.id}}">
+                <view class="img" style="background:{{item.title_color}}"><image src="{{item.thumb}}"></image></view>
+                <view class="title">{{item.name}}</view>
+            </navigator>
+            <view url="{{item.url}}" class="item flex-1" bindtap='bindNoAgency' wx:else>
+                <view class="img" style="background:{{item.title_color}}"><image src="{{item.thumb}}"></image></view>
+                <view class="title">{{item.name}}</view>
+            </view>
+        </block>
+
+        <navigator url="{{item.url}}" class="item flex-1" wx:else>
+            <view class="img" style="background:{{item.title_color}}"><image src="{{item.thumb}}"></image></view>
+            <view class="title">{{item.name}}</view>
+        </navigator>
     </block>
 </view>
 

@@ -1,17 +1,31 @@
 // pages/meal-confirm/meal-confirm.js
 var app = getApp();
+var user = require('../../service/user.js');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        detail:{},
+        detail: {},
 
-        place: [],
-        placeId:0,
+        plade: [],
+        pladeIndex: 0,
+        code_text: '获取验证码',
 
-        
+        trade: {
+            meal_id: null,
+            name: '',
+            code: '',
+            plade_id: null,
+            school: '',
+            address: '',
+            phone: '',
+            sms_code: '',
+        },
+
+        inter: null,
+
     },
 
     /**
@@ -21,10 +35,13 @@ Page({
         //载入套餐信息
         this.loadDetail(options.meal_id);
         //载入学车场地
-        this.loadPlace();
+        this.loadplade();
     },
 
-    loadDetail: function (id) {
+    /**
+     * 套餐信息
+     */
+    loadDetail: function(id) {
         var that = this;
         wx.request({
             url: app.globalData.domain + '/api/meal/meal',
@@ -32,16 +49,18 @@ Page({
             data: {
                 meal_id: id
             },
-            success: function (res) {
-                console.log(res.data.data);
+            success: function(res) {
                 that.setData({
-                    detail: res.data.data
+                    detail: res.data.data,
                 });
             }
         })
     },
 
-    loadPlace:function(){
+    /**
+     * 学车场地
+     */
+    loadplade: function() {
         var that = this;
         wx.getLocation({
             type: 'gcj02',
@@ -53,15 +72,113 @@ Page({
                         lat: res.latitude,
                         lng: res.longitude
                     },
-                    success: function (res) {
-                        console.log(res.data.data);
+                    success: function(res) {
                         that.setData({
-                            place: res.data.data
+                            plade: res.data.data
                         });
                     }
                 })
             }
         })
+    },
+
+    /**
+     * input填写
+     */
+    bindKeyInput: function(e) {
+        var inputname = e.currentTarget.dataset.inputname;
+        var trade = this.data.trade;
+        trade[inputname] = e.detail.value;
+        this.setData({
+            trade: trade
+        });
+    },
+
+    /**
+     * 选择学车场地
+     */
+    bindPladeChange: function(e) {
+        this.setData({
+            'trade.plade_id': this.data.plade[e.detail.value].id,
+            pladeIndex: e.detail.value
+        })
+    },
+
+    /**
+     * 提交订单
+     */
+    bindSubmit: function() {
+        var that = this;
+        var trade = this.data.trade;
+        trade.user_id = user.get_info().id;
+        trade.meal_id = this.data.detail.id;
+        wx.request({
+            url: app.globalData.domain + '/api/user/make_order',
+            method: 'post',
+            data: this.data.trade,
+            success: function(res) {
+                if (res.data.code == 200) {
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'success',
+                    });
+                } else {
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                    });
+                }
+            }
+        })
+    },
+
+    /**
+     * 发送验证码
+     */
+    bindSmsCode: function() {
+        var that = this;
+        if (this.data.code_text != '获取验证码') {
+            return false;
+        }
+        wx.request({
+            url: app.globalData.domain + '/api/sms/make_code',
+            method: 'post',
+            data: {
+                user_id: user.get_info().id,
+                phone: this.data.trade.phone
+            },
+            success: function(res) {
+                if (res.data.code == 200) {
+                    that.setData({
+                        code_text: 60
+                    });
+                    that.data.inter = setInterval(that.f_text_count, 1000);
+                } else {
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                    });
+                }
+            }
+        })
+    },
+
+    /**
+     * 验证码倒计时
+     */
+    f_text_count: function() {
+        var sec = parseInt(this.data.code_text);
+        if (sec == 0) {
+            this.setData({
+                code_text: '获取验证码'
+            });
+            clearInterval(this.data.inter);
+            return false;
+        }
+        sec = sec - 1;
+        this.setData({
+            code_text: sec
+        });
     },
 
     /**
@@ -113,85 +230,7 @@ Page({
 
     },
 
-    showTopTips: function() {
-        var that = this;
-        this.setData({
-            showTopTips: true
-        });
-        setTimeout(function() {
-            that.setData({
-                showTopTips: false
-            });
-        }, 3000);
-    },
-    radioChange: function(e) {
-        console.log('radio发生change事件，携带value值为：', e.detail.value);
 
-        var radioItems = this.data.radioItems;
-        for (var i = 0, len = radioItems.length; i < len; ++i) {
-            radioItems[i].checked = radioItems[i].value == e.detail.value;
-        }
-
-        this.setData({
-            radioItems: radioItems
-        });
-    },
-    checkboxChange: function(e) {
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value);
-
-        var checkboxItems = this.data.checkboxItems,
-            values = e.detail.value;
-        for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
-            checkboxItems[i].checked = false;
-
-            for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
-                if (checkboxItems[i].value == values[j]) {
-                    checkboxItems[i].checked = true;
-                    break;
-                }
-            }
-        }
-
-        this.setData({
-            checkboxItems: checkboxItems
-        });
-    },
-    bindDateChange: function(e) {
-        this.setData({
-            date: e.detail.value
-        })
-    },
-    bindTimeChange: function(e) {
-        this.setData({
-            time: e.detail.value
-        })
-    },
-    bindCountryCodeChange: function(e) {
-        console.log('picker country code 发生选择改变，携带值为', e.detail.value);
-
-        this.setData({
-            countryCodeIndex: e.detail.value
-        })
-    },
-    bindCountryChange: function(e) {
-        console.log('picker country 发生选择改变，携带值为', e.detail.value);
-
-        this.setData({
-            countryIndex: e.detail.value
-        })
-    },
-    bindAccountChange: function(e) {
-        console.log('picker account 发生选择改变，携带值为', e.detail.value);
-
-        this.setData({
-            accountIndex: e.detail.value
-        })
-    },
-    bindAgreeChange: function(e) {
-        this.setData({
-            isAgree: !!e.detail.value.length
-        });
-    }
 
 
 })

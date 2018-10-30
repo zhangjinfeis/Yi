@@ -7,18 +7,86 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo: app.globalData.userInfo,
+        userInfo: {},
+        //订单菜单
+        tradeMenu: [],
+        //保证协议id
+        agreementId: 0,
+        //关于我们id
+        aboutId: 0,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        this.setData({
+            userInfo:user.get_info() 
+        });
         //if(!user.get_info.phone){
         //wx.redirectTo({url:'/pages/user-login/user-login'});
         // }
+        //加载订单menu
+        this.loadTradeMenu();
 
+        //保证协议id
+        this.loadAgreementId();
+
+        //关于我们id加载
+        this.loadAboutId();
+
+    },
+
+    /**
+     * 订单菜单加载
+     */
+    loadTradeMenu: function() {
+        
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/user/order_index',
+            method: 'post',
+            data: {
+                user_id: this.data.userInfo.id,
+            },
+            success: function(res) {
+                that.setData({
+                    tradeMenu: res.data.data
+                });
+            }
+        })
+    },
+
+    /**
+     * 保证协议id加载
+     */
+    loadAgreementId: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/agreement/agreement',
+            method: 'post',
+            success: function(res) {
+                that.setData({
+                    agreementId: res.data.data.id
+                });
+            }
+        })
+    },
+
+    /**
+     * 关于我们id加载
+     */
+    loadAboutId: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/about/about',
+            method: 'post',
+            success: function(res) {
+                that.setData({
+                    aboutId: res.data.data.id
+                });
+            }
+        })
     },
 
     /**
@@ -75,17 +143,20 @@ Page({
         var userInfo = e.detail.userInfo;
         var that = this;
         wx.request({
-            url: app.globalData.domain+'/mp/update_info',
-            method:'post',
-            data:{openid:app.globalData.userInfo.openid,userInfo:userInfo},
-            success:function(res){
-                if(res.data.status == 1){
+            url: app.globalData.domain + '/mp/update_info',
+            method: 'post',
+            data: {
+                openid: app.globalData.userInfo.openid,
+                userInfo: userInfo
+            },
+            success: function(res) {
+                if (res.data.status == 1) {
                     that.setData({
-                        'userInfo':res.data.data
+                        'userInfo': res.data.data
                     });
                     app.globalData.userInfo = res.data.data;
                     wx.setStorage({
-                        key:'user',
+                        key: 'user',
                         data: res.data.data
                     })
                 }

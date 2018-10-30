@@ -14,6 +14,24 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+
+/**
+ * 判断是否登录
+ */
+const auth = function(callback){
+    var app = getApp();
+    if(!app.globalData.userInfo.id){
+        var p = getCurrentPages()
+        var route = "/"+p.pop().__route__
+        wx.redirectTo({
+            url: '/pages/login?redirect=' + encodeURI(route),
+        })
+    }else{
+        callback();
+    }
+}
+
 module.exports = {
-  formatTime: formatTime
+    formatTime: formatTime,
+    auth: auth
 }

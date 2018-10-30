@@ -1,26 +1,77 @@
 // pages/user-exam-apply/user-exam-apply.js
+var util = require('../../utils/util.js');
+var user = require('../../service/user.js');
+var app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        accounts: ["2018-11-12光谷训练场光谷训练场光谷训练场", "2018-11-13光谷训练场", "2018-11-14光谷训练场"],
-        accountIndex: 0,
+        list: [],
+        listIndex: 0,
+
+        btnLoading :false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        var that = this;
+        util.auth(function(){
+            that.loadList();
+        });
     },
 
-    bindAccountChange: function(e) {
-        console.log('picker account 发生选择改变，携带值为', e.detail.value);
 
+    /**
+     * 加载体检班次列表
+     */
+    loadList:function(){
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/user/exam_reserve',
+            method: 'post',
+            success: function (res) {
+                //console.log(res.data.data);
+                that.setData({
+                    list: res.data.data
+                });
+            }
+        })
+    },
+
+    /**
+     * 选择班次
+     */
+    bindExamChange: function(e) {
         this.setData({
-            accountIndex: e.detail.value
+            listIndex: e.detail.value
+        })
+    },
+
+    submitExamApply:function(){
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/user/exam_create',
+            method: 'post',
+            data:{
+                user_id:user.get_info().id,
+                exam_id:this.data.list[this.data.listIndex].id
+            },
+            success: function (res) {
+                if(res.data.code == 200){
+                    wx.showToast({
+                        title: '预约成功'
+                    })
+                    setTimeout(function(){
+                        wx.redirectTo({
+                            url: '/pages/user-exam/user-exam',
+                        })
+                    },1500);
+                }
+            }
         })
     },
 

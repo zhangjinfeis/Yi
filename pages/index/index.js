@@ -1,12 +1,18 @@
 // pages/swiper/swiper.js
 var user = require('../../service/user.js');
+var agency = require('../../service/agency.js');
+var coach = require('../../service/coach.js');
+var util = require('../../utils/util.js');
 var app = getApp();
 Page({
     /**
      * 页面的初始数据
      */
     data: {
-        domain: app.globalData.domain,
+        userInfo:user.get_info(),
+        agencyInfo:{},
+        coachInfo:coach.get_info(),
+
         nav: [],
         //banner
         banner: {
@@ -32,23 +38,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        var userInfo = user.get_info();
-        console.log(userInfo);
+        var that = this;
+        util.auth(function(){
+            //加载首页导航
+            that.loadNav();
+            //加载套餐列表
+            that.loadMeal();
+            //加载banner
+            that.loadBanner();
+            //学车流程
+            that.loadFlow();
+            //安全保障
+            that.loadInsurance();
+        });
 
-        //加载首页导航
-        this.loadNav();
-
-        //加载套餐列表
-        this.loadMeal();
-
-        //加载banner
-        this.loadBanner();
-
-        //学车流程
-        this.loadFlow();
-
-        //安全保障
-        this.loadInsurance();
+        
 
     },
 
@@ -133,6 +137,26 @@ Page({
                     'insuranceId': res.data.data.id
                 });
             }
+        })
+    },
+
+    /**
+     * 检测代理权限
+     */
+    bindNoAgency: function () {
+        wx.showToast({
+            title: '无访问权限',
+            icon:'none'
+        })
+    },
+
+    /**
+     * 检测教练权限
+     */
+    bindNoCoach: function () {
+        wx.showToast({
+            title: '无访问权限',
+            icon: 'none'
         })
     },
 

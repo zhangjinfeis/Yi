@@ -1,79 +1,154 @@
 // pages/agency-index/agency-index.js
 var user = require('../../service/user.js');
+var agency = require('../../service/agency.js');
 var app = getApp();
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-      userInfo: app.globalData.userInfo,
-  },
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        userInfo: app.globalData.userInfo,
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+        //保证协议id
+        agreementId: 0,
+        //关于我们id
+        aboutId: 0,
 
-  },
+    },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function(options) {
+        //保证协议id
+        this.loadAgreementId();
 
-  },
+        //关于我们id加载
+        this.loadAboutId();
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+        //验证代理权限
+        this.checkAgency();
+    },
 
-  },
+    /**
+     * 保证协议id加载
+     */
+    loadAgreementId: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/agreement/agreement',
+            method: 'post',
+            success: function(res) {
+                that.setData({
+                    agreementId: res.data.data.id
+                });
+            }
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    /**
+     * 关于我们id加载
+     */
+    loadAboutId: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/about/about',
+            method: 'post',
+            success: function(res) {
+                that.setData({
+                    aboutId: res.data.data.id
+                });
+            }
+        })
+    },
 
-  },
+    /**
+     * 验证代理权限
+     */
+    checkAgency: function() {
+        if (agency.get_info().id){
+            return false;
+        }
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/agency/login',
+            method: 'post',
+            data: {
+                user_id: user.get_info().id
+            },
+            success: function(res) {
+                if(res.data.code!=200){
+                    wx.redirectTo({
+                        url: '/pages/index/index',
+                    })
+                }else{
+                    agency.set_info(res.data.data);
+                }
+            }
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function() {
 
-  },
+    },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function() {
 
-  },
+    },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function() {
 
-  },
+    },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function() {
 
-  },
+    },
 
-    getUserInfo: function (e) {
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function() {
+
+    },
+
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function() {
+
+    },
+
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function() {
+
+    },
+
+    getUserInfo: function(e) {
         var userInfo = e.detail.userInfo;
         var that = this;
         wx.request({
             url: app.globalData.domain + '/mp/update_info',
             method: 'post',
-            data: { openid: app.globalData.userInfo.openid, userInfo: userInfo },
-            success: function (res) {
+            data: {
+                openid: app.globalData.userInfo.openid,
+                userInfo: userInfo
+            },
+            success: function(res) {
                 if (res.data.status == 1) {
                     that.setData({
                         'userInfo': res.data.data
@@ -88,5 +163,5 @@ Page({
         })
     }
 
-    
+
 })

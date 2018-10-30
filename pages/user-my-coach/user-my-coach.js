@@ -1,11 +1,14 @@
 // pages/user-my-coach/user-my-coach.js
+var util = require('../../utils/util.js');
+var user = require('../../service/user.js');
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      list:[]
   },
 
   /**
