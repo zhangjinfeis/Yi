@@ -4,66 +4,102 @@ var user = require('../../service/user.js');
 var app = getApp();
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-      list:[]
-  },
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        coach: []
+    },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function(options) {
+        var that = this;
+        util.auth(function() {
+            that.loadExam();
+        });
+    },
 
-  },
+    /**
+     * 我的教练
+     */
+    loadExam: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/user/user_coach',
+            method: 'post',
+            data: {
+                user_id: user.get_info().id
+            },
+            success: function(res) {
+                if (res.data.code == 200) {
+                    that.setData({
+                        coach: res.data.data.coach
+                    });
+                }
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+            }
+        })
+    },
 
-  },
+    /**
+     * 拨打电话
+     */
+    bindPhoneCall: function(e) {
+        var phone = e.currentTarget.dataset.phone;
+        console.log(phone);
+        wx.makePhoneCall({
+            phoneNumber: phone+''
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function() {
 
-  },
+    },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function() {
 
-  },
+    },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function() {
 
-  },
+    },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function() {
 
-  },
+    },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function() {
 
-  },
+    },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function() {
 
-  }
+    },
+
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function() {
+
+    }
 })

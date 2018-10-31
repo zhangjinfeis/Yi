@@ -1,17 +1,75 @@
 <!--pages/agency-commission-apply/agency-commission-apply.wxml-->
 <view class="head">
     <view class="note">可提现积分</view>
-    <view class="money green">620</view>
+    <view class="money green">{{agencyInfo.commission}}</view>
 </view>
 
+<block wx:if="{{apply.id}}">
+<view class="weui-cells__title">当前提现申请</view>
+<view class="weui-form-preview">
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">申请金额</view>
+            <view class="weui-form-preview__value">￥{{apply.money}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">提现方式</view>
+            <view class="weui-form-preview__value">
+                <text wx:if="{{apply.type==1}}">支付宝</text>
+                <text wx:elif="{{apply.type==2}}">银行卡</text>
+            </view>
+        </view>
+        <view class="weui-form-preview__item" wx:if="{{apply.type==1}}">
+            <view class="weui-form-preview__label">支付宝账号</view>
+            <view class="weui-form-preview__value">{{apply.alipay}}</view>
+        </view>
+        <view class="weui-form-preview__item" wx:if="{{apply.type==2}}">
+            <view class="weui-form-preview__label">银行卡账号</view>
+            <view class="weui-form-preview__value">{{apply.card_number}}</view>
+        </view>
+        <view class="weui-form-preview__item" wx:if="{{apply.type==2}}">
+            <view class="weui-form-preview__label">开户行</view>
+            <view class="weui-form-preview__value">{{apply.bank}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">收款人姓名</view>
+            <view class="weui-form-preview__value">{{apply.payee}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">申请时间</view>
+            <view class="weui-form-preview__value">{{apply.created_at}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">状态</view>
+            <view class="weui-form-preview__value">
+                <text wx:if="{{apply.status == 1}}">申请中</text>
+                <text wx:elif="{{apply.status == 2}}">被拒绝</text>
+            </view>
+        </view>
+        <view class="weui-form-preview__item" wx:if="{{apply.status == 2}}">
+            <view class="weui-form-preview__label">拒绝原因</view>
+            <view class="weui-form-preview__value red">{{apply.refuse_reason}}</view>
+        </view>
+    </view>
+</view>
+</block>
+
+<block wx:if="{{apply.status == 2}}">
+<view class="h30"></view>
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="bindReapply">重新申请提现</button>
+</view>
+</block>
+
+<block wx:if="{{!apply.id}}">
 <view class="weui-cells__title">提现方式</view>
 <view class="weui-cells weui-cells_after-title">
     <radio-group bindchange="radioChange">
-        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
-            <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+        <label class="weui-cell weui-check__label" wx:for="{{typeItems}}" wx:key="uniq">
+            <radio class="weui-check" value="{{index}}" checked="{{index == typeIndex}}" />
 
             <view class="weui-cell__bd">{{item.name}}</view>
-            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{index == typeIndex}}">
                 <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
             </view>
         </label>
@@ -20,28 +78,40 @@
 
 <view class="weui-cells__title">提现信息</view>
 <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-            <view class="weui-label">开户行</view>
+    <block wx:if="{{typeIndex == 0}}">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">支付宝账号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="支付宝账号"  data-inputname="alipay" bindinput="bindKeyInput" />
+            </view>
         </view>
-        <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="开户行" />
+    </block>
+    <block wx:if="{{typeIndex == 1}}">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">开户行</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="开户行"  data-inputname="bank" bindinput="bindKeyInput" />
+            </view>
         </view>
-    </view>
-    <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-            <view class="weui-label">银行卡号</view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">银行卡号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number" placeholder="银行卡号"  data-inputname="card_number" bindinput="bindKeyInput" />
+            </view>
         </view>
-        <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="银行卡号" />
-        </view>
-    </view>
+    </block>
     <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
             <view class="weui-label">收款人姓名</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="收款人姓名" />
+            <input class="weui-input" placeholder="收款人姓名"  data-inputname="payee" bindinput="bindKeyInput" />
         </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -49,12 +119,14 @@
             <view class="weui-label">提现金额</view>
         </view>
         <view class="weui-cell__bd">
-            <input class="weui-input" type="number" placeholder="提现金额" />
+            <input class="weui-input" type="number" placeholder="提现金额"  data-inputname="money" bindinput="bindKeyInput" />
         </view>
     </view>
 </view>
 
-
+<view class="h30"></view>
 <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="showTopTips">提现</button>
+    <button class="weui-btn" type="primary" bindtap="bindSubmit">提现</button>
 </view>
+</block>
+<view class="h60"></view>

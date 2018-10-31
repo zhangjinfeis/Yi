@@ -1,21 +1,14 @@
 <!--component/foot-nav.wxml-->
 <view class="foot flex">
 
-    <navigator url="/pages/index/index" open-type="redirect" class="item flex-1 item-on" wx:if="{{on == 0}}">
-        <view class="icon"><rich-text nodes="{{nodes0}}"></rich-text></view>
-        <view class="name iconfont">首页</view>
-    </navigator>
-    <navigator url="/pages/index/index" open-type="redirect" class="item flex-1" wx:else>
+    <navigator url="/pages/index/index" open-type="redirect" class="item flex-1 {{on==0?'item-on':''}}">
         <view class="icon"><rich-text nodes="{{nodes0}}"></rich-text></view>
         <view class="name iconfont">首页</view>
     </navigator>
 
+
     
-    <navigator url="/pages/news/news" class="item flex-1 item-on" wx:if="{{on == 1}}">
-        <view class="icon"><rich-text nodes="{{nodes1}}"></rich-text></view>
-        <view class="name iconfont">练车技巧</view>
-    </navigator>
-    <navigator url="/pages/news/news" class="item flex-1" wx:else>
+    <navigator url="/pages/news/news" open-type="redirect" class="item flex-1  {{on==1?'item-on':''}}">
         <view class="icon"><rich-text nodes="{{nodes1}}"></rich-text></view>
         <view class="name iconfont">练车技巧</view>
     </navigator>
@@ -31,11 +24,7 @@
     </navigator>
 -->
 
-    <navigator url="/pages/user-index/user-index" open-type="redirect" class="item flex-1 item-on" wx:if="{{on == 3}}">
-        <view class="icon"><rich-text nodes="{{nodes3}}"></rich-text></view>
-        <view class="name iconfont">个人中心</view>
-    </navigator>
-    <navigator url="/pages/user-index/user-index" open-type="redirect" class="item flex-1" wx:else>
+    <navigator url="/pages/user-index/user-index" open-type="redirect" class="item flex-1  {{on==3?'item-on':''}}" >
         <view class="icon"><rich-text nodes="{{nodes3}}"></rich-text></view>
         <view class="name iconfont">个人中心</view>
     </navigator>

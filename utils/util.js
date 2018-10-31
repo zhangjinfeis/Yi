@@ -16,22 +16,35 @@ const formatNumber = n => {
 
 
 /**
- * 判断是否登录
+ * 判断会员是否登录
  */
-const auth = function(callback){
+const auth = function (callback) {
     var app = getApp();
-    if(!app.globalData.userInfo.id){
+    if (!app.globalData.userInfo.id) {
         var p = getCurrentPages()
-        var route = "/"+p.pop().__route__
+        var route = "/" + p.pop().__route__
         wx.redirectTo({
             url: '/pages/login?redirect=' + encodeURI(route),
         })
-    }else{
+    } else {
         callback();
+    }
+}
+
+/**
+ * 判断代理是否登录
+ */
+const authAgency = function () {
+    var app = getApp();
+    if (!app.globalData.agencyInfo.id) {
+        wx.navigateBack({
+            delta: 1
+        })
     }
 }
 
 module.exports = {
     formatTime: formatTime,
-    auth: auth
+    auth: auth,
+    authAgency: authAgency
 }

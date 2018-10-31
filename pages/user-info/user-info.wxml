@@ -1,0 +1,33 @@
+<!--pages/user-info/user-info.wxml-->
+<view class="weui-cells__title">个人资料</view>
+<view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">真实姓名</view>
+            <view class="weui-form-preview__value_in-hd">{{userInfo.realName}}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">昵称</view>
+            <view class="weui-form-preview__value">{{userInfo.nickName}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">手机</view>
+            <view class="weui-form-preview__value">{{userInfo.phone?userInfo.phone:'未绑定'}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">性别</view>
+            <view class="weui-form-preview__value">
+                <text wx:if="{{userInfo.gender==1}}">男</text>
+                <text wx:elif="{{userInfo.gender==2}}">女</text>
+                <text wx:else>未知</text>
+            </view>
+        </view>
+    </view>
+    <view class="weui-form-preview__ft" wx:if="{{!userInfo.phone}}">
+        <navigator url="/pages/user-phone/user-phone" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">绑定手机号</navigator>
+    </view>
+</view>
+<view class="weui-cells__tips" wx:if="{{!userInfo.phone}}">代理、教练角色需绑定手机号</view>
+<view class="h60"></view>

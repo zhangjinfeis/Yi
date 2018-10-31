@@ -1,28 +1,8 @@
 {
     "pages": [
-
+        
         "pages/index/index",
-        "pages/user-my-coach/user-my-coach",
-        
-        
         "pages/login",
-        "pages/agency-index/agency-index",
-        "pages/agency-commission/agency-commission",
-        "pages/agency-commission-apply/agency-commission-apply",
-        "pages/agency-user-detail/agency-user-detail",
-        "pages/agency-user/agency-user",
-        
-        "pages/user-index/user-index",
-        "pages/user-exam/user-exam",
-        "pages/user-exam-apply/user-exam-apply",
-        "pages/user-meal-trade/user-meal-trade",
-        "pages/user-phone/user-phone",
-        "pages/user-subject/user-subject",
-        "pages/user-subject-apply/user-subject-apply",
-        "pages/user-process/user-process",
-        
-
-
         "pages/meal-confirm/meal-confirm",
         "pages/meal-detail/meal-detail",
         "pages/faq/faq",
@@ -38,7 +18,30 @@
         "pages/coach-user/coach-user",
         "pages/pay-complete/pay-complete",
         "pages/page-detail/page-detail",
-        "pages/guestbook/guestbook"
+        "pages/guestbook/guestbook",
+
+        "pages/user-index/user-index",
+        "pages/user-info/user-info",
+        "pages/user-phone/user-phone",
+        "pages/user-exam/user-exam",
+        "pages/user-exam-apply/user-exam-apply",
+        "pages/user-meal-trade/user-meal-trade",
+        "pages/user-subject/user-subject",
+        "pages/user-subject-apply/user-subject-apply",
+        "pages/user-process/user-process",
+        "pages/user-my-coach/user-my-coach",
+        "pages/user-contact/user-contact",
+
+        
+        
+
+
+        "pages/agency-commission/agency-commission",
+        "pages/agency-commission-apply/agency-commission-apply",
+        "pages/agency-index/agency-index",
+        "pages/agency-user/agency-user",
+        "pages/agency-info/agency-info",
+        "pages/agency-user-detail/agency-user-detail"
         
     ],
     "window": {

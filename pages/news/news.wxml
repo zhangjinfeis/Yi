@@ -1,5 +1,5 @@
 <!--pages/news/news.wxml-->
-
+<foot-nav on="1"></foot-nav>
 <view class="weui-navbar news-head">
     <block wx:for="{{tabs}}" wx:key="uniq">
         <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
@@ -40,6 +40,8 @@
     <view class="weui-loadmore weui-loadmore_line" hidden="{{!item.is_bottom}}">
         <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到达底线</view>
     </view>
+    <view class="h60"></view>
 
 </view>
+
 </block>

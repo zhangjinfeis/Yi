@@ -1,0 +1,5 @@
+<!--pages/user-contact/user-contact.wxml-->
+<view class="contact">
+<button open-type="contact" type="primary">联系客服</button>
+</view>
+

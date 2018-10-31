@@ -1,5 +1,6 @@
 // pages/user-index/user-index.js
 var user = require('../../service/user.js');
+var util = require('../../utils/util.js');
 var app = getApp();
 Page({
 
@@ -20,20 +21,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        this.setData({
-            userInfo:user.get_info() 
+
+        var that = this;
+        util.auth(function(){
+            that.setData({
+                userInfo: user.get_info()
+            });
+
+            //加载订单menu
+            that.loadTradeMenu();
+            //保证协议id
+            that.loadAgreementId();
+            //关于我们id加载
+            that.loadAboutId();
         });
-        //if(!user.get_info.phone){
-        //wx.redirectTo({url:'/pages/user-login/user-login'});
-        // }
-        //加载订单menu
-        this.loadTradeMenu();
-
-        //保证协议id
-        this.loadAgreementId();
-
-        //关于我们id加载
-        this.loadAboutId();
+        
 
     },
 

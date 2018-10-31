@@ -9,9 +9,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo:user.get_info(),
+        userInfo:{},
         agencyInfo:{},
-        coachInfo:coach.get_info(),
+        coachInfo:{},
 
         nav: [],
         //banner
@@ -40,6 +40,11 @@ Page({
     onLoad: function(options) {
         var that = this;
         util.auth(function(){
+            that.setData({
+                userInfo: user.get_info(),
+                agencyInfo: agency.get_info(),
+                coachInfo: coach.get_info(),
+            });
             //加载首页导航
             that.loadNav();
             //加载套餐列表

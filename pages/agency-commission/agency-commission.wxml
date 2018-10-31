@@ -1,19 +1,21 @@
 <!--pages/agency-commission/agency-commission.wxml-->
 <view class="weui-cells__title">佣金记录</view>
 <view class="list">
+    <block wx:for="{{list}}" wx:key="uniq">
     <view class="item">
-        <view class="time">2018-11-14 10:22</view>
+        <view class="time">{{item.created_at}}</view>
         <view class="con flex">
-            <view class="action flex-1">申请提现200，提现完成【余额100】</view>
-            <view class="money green">-200</view>
+            <view class="action flex-1">{{item.action}}【余额{{item.money_now}}】</view>
+            <view class="money green">{{item.money>0?'+'+item.money:item.money}}</view>
         </view>
     </view>
-    <view class="item">
-        <view class="time">2018-10-14 10:22</view>
-        <view class="con flex">
-            <view class="action flex-1">周星星订单[2018093031244335]通过，结算佣金【余额300】</view>
-            <view class="money green">+300</view>
-        </view>
-    </view>
+    </block>
+</view>
+<view class="weui-loadmore" hidden="{{isBottom}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" hidden="{{!isBottom}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到达底线</view>
 </view>
 <view class="h30"></view>

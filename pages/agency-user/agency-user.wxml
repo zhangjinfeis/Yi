@@ -1,40 +1,46 @@
 <!--pages/agency-user/agency-user.wxml-->
-<view class="weui-cells__title">待签约学员</view>
+<view class="weui-cells__title">{{status == 1?'待签约学员':'已签约学员'}}</view>
+<block wx:for="{{list}}" wx:key="uniq">
 <view class="weui-form-preview">
     <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">学员姓名</view>
-            <view class="weui-form-preview__value_in-hd">朴树</view>
+            <view class="weui-form-preview__value_in-hd">{{item.realname}}</view>
         </view>
     </view>
     <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">手机</view>
-            <view class="weui-form-preview__value">18012431666</view>
+            <view class="weui-form-preview__value">{{item.phone}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">报名时间</view>
+            <view class="weui-form-preview__value">{{item.created_at}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">报名状态</view>
+            <view class="weui-form-preview__value">
+                <text wx:if="{{item.status==1}}">待签约</text>
+                <text wx:elif="{{item.status==2}}">待付款</text>
+                <text wx:elif="{{item.status==3}}">报名成功</text>
+                <text wx:elif="{{item.status==4}}">已退款</text>
+            </view>
         </view>
     </view>
     <view class="weui-form-preview__ft">
-    <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">拨打电话</navigator>
-        <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">完成签约</navigator>
+        <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" data-phone="{{item.phone}}" bindtap="bindPhoneCall">拨打电话</view>
+        <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" wx:if="{{item.status == 1}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="bindFinishSign">完成签约</view>
+        <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" wx:if="{{item.status == 2}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="bindFinishPay">完成线下缴费</view>
     </view>
 </view>
 <view class="h30"></view>
-<view class="weui-form-preview">
-    <view class="weui-form-preview__hd">
-        <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">学员姓名</view>
-            <view class="weui-form-preview__value_in-hd">朴树</view>
-        </view>
-    </view>
-    <view class="weui-form-preview__bd">
-        <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">手机</view>
-            <view class="weui-form-preview__value">18012431666</view>
-        </view>
-    </view>
-    <view class="weui-form-preview__ft">
-    <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">拨打电话</navigator>
-        <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">完成线下缴费</navigator>
-    </view>
+</block>
+
+<view class="weui-loadmore" hidden="{{is_bottom}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" hidden="{{!is_bottom}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到达底线</view>
 </view>
 <view class="h30"></view>

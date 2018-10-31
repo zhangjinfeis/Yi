@@ -2,7 +2,6 @@
 
 <foot-nav on="0"></foot-nav>
 
-
 <!--首页banner-->
 <view class="banner">
     <swiper indicator-dots="{{banner.indicatorDots}}"

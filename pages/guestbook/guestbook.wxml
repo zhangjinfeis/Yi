@@ -11,5 +11,5 @@
 </view>
 
 <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="showTopTips">提交留言</button>
+    <button class="weui-btn" type="primary" bindtap="submitGuestbook">提交留言</button>
 </view>

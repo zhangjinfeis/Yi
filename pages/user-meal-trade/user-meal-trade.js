@@ -1,5 +1,6 @@
 // pages/user-meal-trade/user-meal-trade.js
 var user = require('../../service/user.js');
+var util = require('../../utils/util.js');
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 var app = getApp();
 Page({
@@ -23,13 +24,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        this.setData({
-            activeIndex: options.index,
-            userInfo:user.get_info()
+        var that = this;
+        util.auth(function(){
+            that.setData({
+                activeIndex: options.index,
+                userInfo: user.get_info()
+            });
+            //加载订单menu
+            that.loadTradeMenu();
         });
-        //加载订单menu
-        this.loadTradeMenu();
-        
     },
 
     /**
@@ -111,10 +114,18 @@ Page({
     },
 
     /**
-     * 加载列表
+     * 刷新列表
      */
     refreshList: function () {
         var that = this;
+
+        //设置页码为1
+        var content = that.data.content;
+        content[that.data.activeIndex].page = 1;
+        that.setData({
+            content: content
+        });
+
         wx.request({
             url: app.globalData.domain + '/api/user/order_list',
             method: 'post',

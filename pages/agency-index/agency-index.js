@@ -1,6 +1,7 @@
 // pages/agency-index/agency-index.js
 var user = require('../../service/user.js');
 var agency = require('../../service/agency.js');
+var util = require('../../utils/util.js');
 var app = getApp();
 Page({
 
@@ -8,7 +9,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo: app.globalData.userInfo,
+        userInfo: {},
+        agencyInfo: {},
+
+        tradeMenu: {},
 
         //保证协议id
         agreementId: 0,
@@ -21,14 +25,43 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        //保证协议id
-        this.loadAgreementId();
+        var that = this;
+        util.auth(function() {
+            util.authAgency();
 
-        //关于我们id加载
-        this.loadAboutId();
+            that.setData({
+                userInfo: user.get_info(),
+                agencyInfo: agency.get_info()
+            });
 
-        //验证代理权限
-        this.checkAgency();
+            //加载订单菜单
+            that.loadTradeMenu();
+
+            //保证协议id
+            that.loadAgreementId();
+
+            //关于我们id加载
+            that.loadAboutId();
+        });
+    },
+
+    /**
+     * 加载订单菜单
+     */
+    loadTradeMenu: function() {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/agency/trade_menu',
+            method: 'post',
+            data: {
+                code: agency.get_info().code,
+            },
+            success: function(res) {
+                that.setData({
+                    tradeMenu: res.data.data
+                });
+            }
+        })
     },
 
     /**
@@ -65,7 +98,7 @@ Page({
 
     /**
      * 验证代理权限
-     */
+     
     checkAgency: function() {
         if (agency.get_info().id){
             return false;
@@ -88,6 +121,7 @@ Page({
             }
         })
     },
+    */
 
     /**
      * 生命周期函数--监听页面初次渲染完成
