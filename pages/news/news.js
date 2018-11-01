@@ -78,10 +78,7 @@ Page({
             },
             method: "post",
             success: function(res) {
-                if(res.data.code != 200){
-                    return false;
-                }
-
+            
                 var content = that.data.content;
                 content[that.data.activeIndex].list = that.data.content[that.data.activeIndex].list.concat(res.data.data);
                 that.setData({

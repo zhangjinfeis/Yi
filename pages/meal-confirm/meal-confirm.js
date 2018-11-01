@@ -112,6 +112,7 @@ Page({
         var trade = this.data.trade;
         trade.user_id = user.get_info().id;
         trade.meal_id = this.data.detail.id;
+        trade.plade_id = this.data.plade[this.data.pladeIndex].id;
         wx.request({
             url: app.globalData.domain + '/api/user/make_order',
             method: 'post',
@@ -122,6 +123,11 @@ Page({
                         title: res.data.msg,
                         icon: 'success',
                     });
+                    setTimeout(function(){
+                        wx.navigateBack({
+                            delta:1
+                        })
+                    },1500);
                 } else {
                     wx.showToast({
                         title: res.data.msg,

@@ -53,9 +53,7 @@ Page({
                 pageSize: this.data.pageSize
             },
             success: function(res) {
-                if (res.data.code != 200) {
-                    return false;
-                }
+            
                 var list = that.data.list;
                 list = list.concat(res.data.data);
                 that.setData({
