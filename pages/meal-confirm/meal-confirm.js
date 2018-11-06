@@ -124,8 +124,8 @@ Page({
                         icon: 'success',
                     });
                     setTimeout(function(){
-                        wx.navigateBack({
-                            delta:1
+                        wx.navigateTo({
+                            url: 'pages/user-meal-trade/user-meal-trade?index=1',
                         })
                     },1500);
                 } else {

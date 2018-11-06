@@ -180,6 +180,13 @@ Page({
         })
     },
 
+    //拨打电话
+    bindContact:function(e){
+        wx.makePhoneCall({
+            phoneNumber:e.currentTarget.dataset.phone+''
+        });
+    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

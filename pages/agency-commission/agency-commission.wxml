@@ -1,5 +1,5 @@
 <!--pages/agency-commission/agency-commission.wxml-->
-<view class="weui-cells__title">佣金记录</view>
+<view class="weui-cells__title">积分记录</view>
 <view class="list">
     <block wx:for="{{list}}" wx:key="uniq">
     <view class="item">

@@ -27,7 +27,7 @@
                 <view class="status" wx:if="{{vo.status==4}}">已退款</view>
             </view>
             <view class="con">
-                <navigator url="/pages/meal-detail/meal-detail" class="order flex">
+                <navigator url="/pages/meal-detail/meal-detail?id={{vo.meal_id}}" class="order flex">
                     <view class="pic">
                         <image src="{{vo.meal_thumb}}"></image>
                     </view>
@@ -40,7 +40,7 @@
             <view class="bottom flex">
                 <view class="time flex-1">下单时间:{{vo.created_at}}</view>
                 <view class="btns">
-                    <button size="mini" type="default" wx:if="{{vo.status==1}}">联系代理</button>
+                    <button size="mini" type="default" wx:if="{{vo.status==1}}" data-phone="{{vo.agency_phone}}" bindtap="bindContact">联系代理</button>
                     <button size="mini" type="primary" wx:if="{{vo.status==2}}" data-tradeid="{{vo.id}}" bindtap="bindPayStart">去付款</button>
                 </view>
             </view>

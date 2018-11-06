@@ -105,6 +105,7 @@ Page({
         var param = this.data.param;
         param.type = this.data.typeItems[this.data.typeIndex].value;
         param.code = agency.get_info().code;
+        var agency_that = agency;
         wx.request({
             url: app.globalData.domain + '/api/agency/cash_withdrawal',
             method: 'post',
@@ -114,6 +115,10 @@ Page({
                     wx.showToast({
                         title: res.data.msg,
                     });
+                    var agency = agency_that.get_info();
+                    agency.commission -= param.money;
+                    agency_that.set_info(agency);
+                    //app.globalData.agency.commission = commission;
                     setTimeout(function () {
                         wx.navigateBack({
                             delta: 1

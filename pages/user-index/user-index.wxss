@@ -13,4 +13,4 @@ page{background: #f2f2f2;}
 /*订单*/
 .order-3{padding:20rpx;background:#ffffff;border-bottom:#d9d9d9 1rpx solid;}
 .order-3 .item{ height: 80rpx; line-height: 80rpx; text-align:center; position: relative;}
-.order-3 .item .badge{ position:absolute;top:10rpx;left:50%;margin:0 0 0 40rpx;}
+.order-3 .item .badge{ position:absolute;top:6rpx;left:50%;margin:0 0 0 40rpx;}
