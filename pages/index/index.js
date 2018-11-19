@@ -45,6 +45,7 @@ Page({
                 agencyInfo: agency.get_info(),
                 coachInfo: coach.get_info(),
             });
+            //console.log(coach.get_info());
             //加载首页导航
             that.loadNav();
             //加载套餐列表

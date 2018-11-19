@@ -1,5 +1,5 @@
 //app.js
-var user = require ('./service/user.js');
+var user = require('./service/user.js');
 
 App({
     onLaunch: function() {
@@ -28,7 +28,7 @@ App({
 
     },
     globalData: {
-        domain: "https://mp.whrango.com",
+        domain: "https://www.guaikakeji.com",
         userInfo: {},
         agencyInfo: {},
         coachInfo: {},

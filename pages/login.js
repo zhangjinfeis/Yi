@@ -7,14 +7,14 @@ Page({
      */
     data: {
         domain: app.globalData.domain,
-        userInfo:{
-            "avatarUrl": app.globalData.domain+"/resources/mp/images/default_headimgurl.png",
-            "nickName":"未授权用户",
+        userInfo: {
+            "avatarUrl": app.globalData.domain + "/resources/mp/images/default_headimgurl.png",
+            "nickName": "未授权用户",
 
         },
-        btnText:"同意并授权",
-        btnLoading:false,
-        redirectUrl:"",
+        btnText: "同意并授权",
+        btnLoading: false,
+        redirectUrl: "",
     },
 
     /**
@@ -22,7 +22,7 @@ Page({
      */
     onLoad: function(options) {
         this.setData({
-            redirectUrl:options.redirect
+            redirectUrl: options.redirect
         });
         wx.login({
             success: res => {
@@ -35,10 +35,10 @@ Page({
                         code: res.code
                     },
                     success(res) {
-                        if (res.data.status == 2) {  //当新登记用户后需要更新storage
+                        if (res.data.status == 2) { //当新登记用户后需要更新storage
                             //console.log(res.data.data.user);
                             var o_nickName = res.data.data.user.nickName;
-                            if(!res.data.data.user.nickName){
+                            if (!res.data.data.user.nickName) {
                                 res.data.data.user.nickName = that.data.userInfo.nickName;
                                 res.data.data.user.avatarUrl = that.data.userInfo.avatarUrl;
                             }
@@ -49,16 +49,16 @@ Page({
                                 userInfo: res.data.data.user
                             });
                             //当有基本信息
-                            if (o_nickName){
+                            if (o_nickName) {
                                 that.setData({
-                                    btnText:"自动登录中",
-                                    btnLoading:true
+                                    btnText: "自动登录中",
+                                    btnLoading: true
                                 });
-                                setTimeout(function(){
+                                setTimeout(function() {
                                     wx.redirectTo({
                                         url: that.data.redirectUrl,
                                     })
-                                },2000);
+                                }, 2000);
                             }
                         }
                     }
@@ -86,27 +86,27 @@ Page({
         this.setData({
             'userInfo.avatarUrl': e.detail.userInfo.avatarUrl,
             'userInfo.nickName': e.detail.userInfo.nickName,
-            btnText:"登录中",
-            btnLoading:true
+            btnText: "登录中",
+            btnLoading: true
         });
         var that = this;
         wx.request({
             url: app.globalData.domain + '/mp/update_info',
-            method:"post",
-            data: { 
+            method: "post",
+            data: {
                 openid: that.data.userInfo.openid,
                 userInfo: e.detail.userInfo
             },
-            success:function(res){
-                if(res.data.code == 200){
-                    setTimeout(function () {
+            success: function(res) {
+                if (res.data.code == 200) {
+                    setTimeout(function() {
                         wx.redirectTo({
                             url: that.data.redirectUrl,
                         })
                     }, 1000);
                 }
-                
-                
+
+
             }
         })
     },
