@@ -3,67 +3,36 @@
     <button class="weui-btn" type="primary" bindtap="bindLessonAdd">发布新课程</button>
 </view>
 
+<block wx:for="{{list}}" wx:key="uniq">
 <view class="weui-form-preview">
     <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">日期</view>
-            <view class="weui-form-preview__value_in-hd">2018年4月30日</view>
+            <view class="weui-form-preview__value_in-hd">{{item.day}}</view>
         </view>
     </view>
     <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">时间</view>
-            <view class="weui-form-preview__value">上午8:00-11:00</view>
+            <view class="weui-form-preview__value">{{item.type}}</view>
         </view>
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">练车场地</view>
-            <view class="weui-form-preview__value">光谷练车场</view>
+            <view class="weui-form-preview__value">{{item.place}}</view>
         </view>
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">人数上限</view>
-            <view class="weui-form-preview__value">10人</view>
+            <view class="weui-form-preview__value">{{item.max_number}}人</view>
         </view>
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">预约人数</view>
-            <view class="weui-form-preview__value">4人</view>
+            <view class="weui-form-preview__value">{{item.number}}人</view>
         </view>
     </view>
     <view class="weui-form-preview__ft">
-        <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">删除</navigator>
-        <navigator url="/pages/coach-lesson-apply-detail/coach-lesson-apply-detail" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">预约详情</navigator>
-        <navigator url="/pages/coach-lesson-add/coach-lesson-add" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">编辑</navigator>
+        <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" data-lessonid="{{item.id}}" bindtap="bindLessonDel">删除</view>
+        <navigator url="/pages/coach-lesson-apply-detail/coach-lesson-apply-detail?subject_id={{item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">预约详情</navigator>
     </view>
 </view>
 <view class="h30"></view>
-
-<view class="weui-form-preview">
-    <view class="weui-form-preview__hd">
-        <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">日期</view>
-            <view class="weui-form-preview__value_in-hd">2018年4月30日</view>
-        </view>
-    </view>
-    <view class="weui-form-preview__bd">
-        <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">时间</view>
-            <view class="weui-form-preview__value">上午8:00-11:00</view>
-        </view>
-        <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">练车场地</view>
-            <view class="weui-form-preview__value">光谷练车场</view>
-        </view>
-        <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">人数上限</view>
-            <view class="weui-form-preview__value">10人</view>
-        </view>
-        <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">已报人数</view>
-            <view class="weui-form-preview__value">4人</view>
-        </view>
-    </view>
-    <view class="weui-form-preview__ft">
-        <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">删除</navigator>
-        <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">预约详情</navigator>
-        <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">编辑</navigator>
-    </view>
-</view>
+</block>

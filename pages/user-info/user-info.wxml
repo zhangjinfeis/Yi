@@ -4,7 +4,7 @@
     <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">真实姓名</view>
-            <view class="weui-form-preview__value_in-hd">{{userInfo.realName}}</view>
+            <view class="weui-form-preview__value_in-hd">{{userInfo.realName?userInfo.realName:'未填写'}}</view>
         </view>
     </view>
     <view class="weui-form-preview__bd">

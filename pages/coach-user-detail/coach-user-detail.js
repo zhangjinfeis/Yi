@@ -19,7 +19,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        options.user_id = 40;
+        //options.user_id = 40;
         var that = this;
         util.auth(function() {
             that.setData({
@@ -50,6 +50,46 @@ Page({
                 });
             }
         })
+    },
+
+    bindStatusChange:function(e){
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/coach/edit_students_subject',
+            method: 'post',
+            data: {
+                coach_id: this.data.coachInfo.id,
+                user_id: this.data.options.user_id,
+                is_subject:e.currentTarget.dataset.item
+            },
+            success: function (res) {
+                if(res.data.code == 200){
+                    var student = that.data.student;
+                    console.log(e.currentTarget.dataset.item);
+                    switch (e.currentTarget.dataset.item){
+                        case ("1"): student.is_subject_1 = 1; break;
+                        case ("2"): student.is_subject_2 = 1; break;
+                        case ("3"): student.is_subject_3 = 1; break;
+                        case ("4"): student.is_subject_4 = 1; break;
+                    }
+                    console.log(student);
+                    that.setData({ student: student });
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'success',
+                        duration: 1500
+                    });
+                }else{
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500
+                    }); 
+                }
+            }
+        })
+        
+        
     },
 
     /**

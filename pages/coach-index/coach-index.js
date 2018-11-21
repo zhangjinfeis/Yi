@@ -1,5 +1,6 @@
 // pages/coach-index/coach-index.js
 var coach = require('../../service/coach.js');
+var user = require('../../service/user.js');
 var util = require('../../utils/util.js');
 var app = getApp();
 Page({
@@ -8,8 +9,15 @@ Page({
      * 页面的初始数据
      */
     data: {
-        coachInfo: app.globalData.coachInfo,
+        coachInfo: {},
+        userInfo:{},
+
         menu:{},
+
+        //保证协议id
+        agreementId: 0,
+        //关于我们id
+        aboutId: 0,
     },
 
     /**
@@ -19,10 +27,18 @@ Page({
         var that = this;
         util.auth(function() {
             that.setData({
-                coachInfo: coach.get_info()
+                coachInfo: coach.get_info(),
+                userInfo: user.get_info()
             });
             //加载导航菜单
             that.bindMenu();
+
+            //保证协议id
+            that.loadAgreementId();
+
+            //关于我们id加载
+            that.loadAboutId();
+
         });
     },
 
@@ -34,6 +50,38 @@ Page({
             success: function (res) {
                 that.setData({
                     menu: res.data.data
+                });
+            }
+        })
+    },
+
+    /**
+     * 保证协议id加载
+     */
+    loadAgreementId: function () {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/agreement/agreement',
+            method: 'post',
+            success: function (res) {
+                that.setData({
+                    agreementId: res.data.data.id
+                });
+            }
+        })
+    },
+
+    /**
+     * 关于我们id加载
+     */
+    loadAboutId: function () {
+        var that = this;
+        wx.request({
+            url: app.globalData.domain + '/api/about/about',
+            method: 'post',
+            success: function (res) {
+                that.setData({
+                    aboutId: res.data.data.id
                 });
             }
         })
