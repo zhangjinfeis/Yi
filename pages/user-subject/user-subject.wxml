@@ -1,7 +1,16 @@
 <!--pages/user-subject2/user-subject2.wxml-->
 
+
+<block wx:if="{{options.subject_type==2 && userInfo.is_exam!=1}}">
+    <view class="g-nodata">科目二未开启</view>
+</block>
+
+<block wx:elif="{{options.subject_type==3 && userInfo.is_subject_2!=1}}">
+    <view class="g-nodata">科目三未开启</view>
+</block>
+<block wx:else>
 <view class="h30"></view>
-<view class="page-title">科目二</view>
+<view class="page-title">科目{{options.subject_type==2?'二':'三'}}</view>
 <view class="h30"></view>
 <view style="padding:0 30%;">
     <button class="weui-btn" type="primary" bindtap="bindSubjectApply">预约课程</button>
@@ -10,56 +19,33 @@
 
 <view class="weui-cells__title">我的课程</view>
 <view class="user-subject">
-    <view class="item">
+    <view class="item" wx:for="{{list}}" wx:key="uniq">
         <view class="weui-form-preview">
             <view class="weui-form-preview__bd">
                 <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">时间</view>
-                    <view class="weui-form-preview__value">2018-11-12 下午</view>
+                    <view class="weui-form-preview__value">{{item.day}}</view>
                 </view>
                 <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">地点</view>
-                    <view class="weui-form-preview__value">光谷训练场</view>
+                    <view class="weui-form-preview__value">{{item.place}}</view>
                 </view>
                 <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">教练</view>
-                    <view class="weui-form-preview__value">朴树</view>
+                    <view class="weui-form-preview__value">{{item.coach_name}}</view>
                 </view>
                 <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">状态</view>
-                    <view class="weui-form-preview__value">预约中</view>
+                    <view class="weui-form-preview__value">{{item.is_active}}</view>
                 </view>
             </view>
             <view class="weui-form-preview__ft">
-            <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">联系教练</navigator>
-                <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">取消预约</navigator>
-            </view>
-        </view>
-    </view>
-    <view class="item">
-        <view class="weui-form-preview">
-            <view class="weui-form-preview__bd">
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">时间</view>
-                    <view class="weui-form-preview__value">2018-11-12 下午</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">地点</view>
-                    <view class="weui-form-preview__value">光谷训练场</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">教练</view>
-                    <view class="weui-form-preview__value">朴树</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">状态</view>
-                    <view class="weui-form-preview__value">预约中</view>
-                </view>
-            </view>
-            <view class="weui-form-preview__ft">
-            <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">联系教练</navigator>
-                <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">取消预约</navigator>
+            <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" data-phone="{{item.coach_phone}}" bindtap="bindPhoneCall">联系教练</view>
+                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" data-applyid="{{item.subject_apply_id}}" bindtap="bindCancel">取消预约</view>
             </view>
         </view>
     </view>
 </view>
+</block>
+
+

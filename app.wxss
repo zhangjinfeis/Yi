@@ -28,3 +28,5 @@ page{font-size:32rpx;color:#333;}
 .green{color:#1aad19;}
 .c888{color:#888;}
 .c999{color:#999;}
+
+.g-nodata{text-align: center;padding:50rpx 30rpx;color:#999;}

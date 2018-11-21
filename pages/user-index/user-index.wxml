@@ -51,11 +51,11 @@
 <!--课程-->
 <view class="weui-cells__title">我的课程</view>
 <view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/user-subject/user-subject" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="/pages/user-subject/user-subject?subject_type=2" class="weui-cell weui-cell_access" hover-class="weui-cell_active" >
         <view class="weui-cell__bd">科目二</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-    <navigator url="/pages/user-subject/user-subject" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="/pages/user-subject/user-subject?subject_type=3" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">科目三</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>

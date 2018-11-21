@@ -48,7 +48,6 @@ Page({
      */
     bindPhoneCall: function(e) {
         var phone = e.currentTarget.dataset.phone;
-        console.log(phone);
         wx.makePhoneCall({
             phoneNumber: phone+''
         })
