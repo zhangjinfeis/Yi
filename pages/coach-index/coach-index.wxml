@@ -18,12 +18,12 @@
 <!--课程-->
 <view class="weui-cells__title">课程</view>
 <view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/coach-user-pre/coach-user-pre" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">我的学员</view>
+    <navigator url="{{menu.my_students.url}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{menu.my_students.title}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-    <navigator url="/pages/coach-lesson/coach-lesson" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">我的课程表</view>
+    <navigator url="{{menu.my_lesson.url}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{menu.my_lesson.title}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 </view>

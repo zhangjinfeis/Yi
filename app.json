@@ -1,6 +1,19 @@
 {
     "pages": [
         
+        "pages/coach-user-detail/coach-user-detail",
+        "pages/coach-user-pre/coach-user-pre",
+        "pages/coach-index/coach-index",
+
+        "pages/coach-lesson/coach-lesson",
+        
+        "pages/coach-lesson-apply-detail/coach-lesson-apply-detail",
+        
+        "pages/coach-lesson-add/coach-lesson-add",
+        
+        
+        "pages/coach-user/coach-user",
+        
         "pages/index/index",
         "pages/login",
         "pages/meal-confirm/meal-confirm",
@@ -9,13 +22,8 @@
         "pages/news/news",
         "pages/news-detail/news-detail",
         "pages/place/place",
-        "pages/coach-index/coach-index",
-        "pages/coach-lesson-apply-detail/coach-lesson-apply-detail",
-        "pages/coach-lesson/coach-lesson",
-        "pages/coach-lesson-add/coach-lesson-add",
-        "pages/coach-user-detail/coach-user-detail",
-        "pages/coach-user-pre/coach-user-pre",
-        "pages/coach-user/coach-user",
+
+        
         "pages/pay-complete/pay-complete",
         "pages/page-detail/page-detail",
         "pages/guestbook/guestbook",

@@ -1,12 +1,12 @@
 <!--pages/coach-user-pre/coach-user-pre.wxml-->
 <view class="weui-cells__title">我的学员</view>
 <view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/coach-user/coach-user?in_pro=1" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">当前学员</view>
+    <navigator url="{{menu[0]['url']}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{menu[0]['title']}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-    <navigator url="/pages/coach-user/coach-user?in_pro=9" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">往届学员</view>
+    <navigator url="{{menu[1]['url']}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{menu[1]['title']}}</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 </view>

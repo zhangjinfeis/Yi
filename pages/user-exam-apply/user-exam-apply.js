@@ -34,7 +34,7 @@ Page({
             url: app.globalData.domain + '/api/user/exam_reserve',
             method: 'post',
             success: function (res) {
-                //console.log(res.data.data);
+                console.log(res.data.data);
                 that.setData({
                     list: res.data.data
                 });

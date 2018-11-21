@@ -3,7 +3,7 @@
     <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">学员姓名</view>
-            <view class="weui-form-preview__value_in-hd">张金华</view>
+            <view class="weui-form-preview__value_in-hd">{{student.name}}</view>
         </view>
     </view>
     <view class="weui-form-preview__bd">
@@ -12,26 +12,41 @@
             <view class="weui-form-preview__value">科目二</view>
         </view>
         <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">学习总时长</view>
+            <view class="weui-form-preview__label">学习时长</view>
             <view class="weui-form-preview__value">20小时</view>
         </view>
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">进度</view>
             <view class="weui-form-preview__value">
                 <view class="process">
-                    <span class="green">压离合-</span>
-                    <span class="">停车倒库-</span>
-                    <span class="">侧方停车-</span>
-                    <span class="">上坡起步-</span>
-                    <span class="">直角转弯-</span>
-                    <span class="">S路</span>
+                    <span class="{{item.subject_item_items?'green':''}}" wx:for="{{subject_2}}" wx:key="un">{{index==0?'':'-'}}{{item.title}}</span>
                 </view>
             </view>
         </view>
     </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">科目</view>
+            <view class="weui-form-preview__value">科目三</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">学习时长</view>
+            <view class="weui-form-preview__value">20小时</view>
+        </view>
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">进度</view>
+            <view class="weui-form-preview__value">
+                <view class="process">
+                    <span class="{{item.subject_item_items?'green':''}}" wx:for="{{subject_3}}" wx:key="un">{{index==0?'':'-'}}{{item.title}}</span>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--
     <view class="weui-form-preview__ft">
         <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">压离合通过</navigator>
     </view>
+    -->
 </view>
 
 <view class="h30"></view>
