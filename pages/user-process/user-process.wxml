@@ -1,91 +1,91 @@
 <!--pages/user-process/user-process.wxml-->
 <view class="user-process">
     <view class="container">
-        <view class="start"><image src="https://wx.qlogo.cn/mmopen/vi_32/8OpzDOP83nIxBicB49JMWFq0nicXWBED3Va9oKMNSSibO8bdywjTe6HWtCHFApgicrbPqlepm2SDgleptOPxJjUKxQ/132"></image></view>
+        <view class="start"><image src="{{userInfo.avatarUrl}}"></image></view>
         <view class="h60"></view>
         <view class="h40"></view>
         <view class="item item-on">
-            <view class="point"></view>
+            <view class="point"><image src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 准备参与
-                <view class="time">2018年10月13日</view>
+                <view class="time">{{status.created_at}}</view>
             </view>
             
         </view>
-        <view class="item">
-            <view class="point"><image src="https://wx.qlogo.cn/mmopen/vi_32/8OpzDOP83nIxBicB49JMWFq0nicXWBED3Va9oKMNSSibO8bdywjTe6HWtCHFApgicrbPqlepm2SDgleptOPxJjUKxQ/132"></image></view>
+        <view class="item {{status.pay==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.pay==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 报名成功
-                <view class="time"></view>
+                <view class="time">{{status.pay_time}}</view>
             </view>
         </view>
-        <view class="item">
-            <view class="point"></view>
+        <view class="item {{status.pay==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.pay==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 科一练习
                 <view class="time"></view>
             </view>
         </view>
-        <view class="item">
-            <view class="point"></view>
+        <view class="item {{status.is_subject_1==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.is_subject_1==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 科一通关
                 <view class="time"></view>
             </view>
         </view>
-        <view class="item">
-            <view class="point"></view>
+        <view class="item {{status.is_subject_1==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.is_subject_1==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 科二练习
                 <view class="time"></view>
             </view>
         </view>
-        <view class="item">
-            <view class="point"></view>
+        <view class="item {{status.is_subject_2==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.is_subject_2==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 科二通关
                 <view class="time"></view>
             </view>
         </view>
-        <view class="item">
-            <view class="point"></view>
+        <view class="item {{status.is_subject_2==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.is_subject_2==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 科三练习
                 <view class="time"></view>
             </view>
         </view>
-        <view class="item">
-            <view class="point"></view>
+        <view class="item {{status.is_subject_3==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.is_subject_3==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 科三通关
                 <view class="time"></view>
             </view>
         </view>
-        <view class="item">
-            <view class="point"></view>
+        <view class="item {{status.is_subject_3==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.is_subject_3==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 科四练习
                 <view class="time"></view>
             </view>
         </view>
-        <view class="item">
-            <view class="point"></view>
+        <view class="item {{status.is_subject_4==1?'item-on':''}}">
+            <view class="point"><image wx:if="{{status.is_subject_4==1}}" src="{{userInfo.avatarUrl}}"></image></view>
             <view class="line"></view>
             <view class="tag">
                 科四通关
                 <view class="time"></view>
             </view>
         </view>
-        <view class="end"></view>
+        <view class="end {{status.is_subject_4==1?'end-on':''}}"></view>
     </view>
 </view>
 

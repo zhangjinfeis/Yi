@@ -18,5 +18,6 @@
 .user-process .container .item-on .time{color:#1aad19; }
 
 .user-process .container .end{width:40rpx;height: 40rpx;border-radius:20rpx; background: #999;box-shadow:0 0 0 10rpx rgba(153,153,153,0.5);-webkit-box-shadow:0 0 0 10rpx rgba(153,153,153,0.5); position:absolute;left:-23rpx;bottom:-20rpx;}
+.user-process .container .end-on{background: #1aad19;box-shadow:0 0 0 6rpx rgba(26,173,25,0.5);-webkit-box-shadow:0 0 0 6rpx rgba(26,173,25,0.5);}
 .user-process .container .end::before{content:"领取驾照"; position: absolute;left:80rpx;bottom:-6rpx; display: block;width:200rpx;color:#999;}
 .user-process .container .end image{width:100%;height: 100%;display: block;border-radius:50%; position: relative;z-index: 3;}
